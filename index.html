@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/BookStyle.css">
+<link rel="stylesheet" type="text/css" href="CSS/MenuOverlay.css">
+<script src="Javascript/MenuOverlay.js"></script>
+<script src="Javascript/BookCanvas.js"></script>
+<script src="Javascript/GameFunctions.js"></script>
+
+<title>Volleyball Bookkeeper</title>
+</head>
+
+<body onload="init()">
+
+<div id = "myBook" class = "book">
+<canvas class = "markings" id="myCanvas">
+
+</canvas>
+</div>
+
+<div id="overlay" class="overlay">
+
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+  <div class="overlay-content">
+  <div class="left">
+    <a href="#" onclick="onPoint('a')">Point</a>
+    <a href="#" onclick="onTimeout('a')">Timeout</a>
+    <a href="#" onclick="onSubstitution('a')">Substitution</a>
+    <a href="#" onclick="onPenalty('a')">Penalty</a>
+  </div>
+
+  <div class="right">
+    <a href="#" onclick="onPoint('b')">Point</a>
+    <a href="#" onclick="onTimeout('b')">Timeout</a>
+    <a href="#" onclick="onSubstitution('b')">Substitution</a>
+    <a href="#" onclick="onPenalty('b')">Penalty</a>
+  </div>
+  </div>
+</div>
+
+</body>
+</html> 
