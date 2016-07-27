@@ -1,1 +1,20 @@
 
+
+.book {
+background-image: url('../Images/layout1.png');
+background-size: contain;
+background-repeat: no-repeat;
+width: 100%;
+height: auto;
+y-overflow: hidden;
+}
+
+.markings {
+position: relative;
+border: 1px solid black;
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 100%;
+}
+
