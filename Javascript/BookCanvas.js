@@ -16,7 +16,7 @@ var fontSize;
 Prepares the canvas to be drawn on by storing the canvas object, context, width,
 and height as well as sets canvasReady to true.
 */
-function init()
+function init(modfile)
 {
     scale = 3;
     canvas = document.getElementById("myCanvas");
@@ -36,6 +36,7 @@ canvas.addEventListener('mousedown', function(event) {
     openMenu();
         }, false);
 
+    onStart(modfile);
 }
 
 /*
@@ -44,9 +45,9 @@ xPercent: horizontal percentage from the left.
 yPercent: vertical percentage from the top.
 text: text being drawn.
 */
-function drawText(xPercent, yPercent, text, circled)
+function drawText(xPercent, yPercent, text)
 {
-    if(canvasReady != true)
+    if(!canvasReady)
         return;
     var xLocation = xPercent * width * scale;
     var yLocation = yPercent * height * scale;
@@ -62,7 +63,7 @@ text: text being drawn.
 */
 function circleText(xPercent, yPercent, text)
 {
-    if(canvasReady != true)
+    if(!canvasReady)
         return;
     var xLocation = xPercent * width * scale;
     var yLocation = yPercent * height * scale;
@@ -81,7 +82,7 @@ text: text being drawn.
 */
 function triangleText(xPercent, yPercent, text)
 {
-    if(canvasReady != true)
+    if(!canvasReady)
         return;
     var xLocation = xPercent * width * scale;
     var yLocation = yPercent * height * scale;
@@ -90,6 +91,15 @@ function triangleText(xPercent, yPercent, text)
     var fontWidth = context.measureText(text).width * 2;
     var fontHeight = context.measureText("M").width * 2;
     drawTriangle(xLocation - (fontWidth / 4), yLocation - (fontHeight / 1.25), fontWidth, fontHeight);
+}
+
+function clearRect(xPercent, yPercent, xPercent2, yPercent2)
+{
+    if(!canvasReady)
+        return;
+    var dx = xPercent2 - xPercent;
+    var dy = yPercent2 - yPercent;
+    context.clearRect(xPercent * width * scale, yPercent * height * scale, dx * scale * width, yPercent2 * height * scale);
 }
 
 /*
