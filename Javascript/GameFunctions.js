@@ -38,6 +38,7 @@ var timeoutCap; //max number of timeouts per team (usually 2)
 var aServe; //boolean if team a is serving
 var input; //array containing all input
 
+var module;
 var onPoint;
 var onSubstitution;
 var onTimeout;
@@ -47,9 +48,10 @@ var onSetFinished;
 /*
 Called when the set is started.
 */
-function onstart()
+function onStart()
 {
-    
+    module = getModule();
+    module.onStart();
 }
 
 /*
@@ -59,6 +61,7 @@ team: l (left) or r (right) depending on which point button was pushed.
 function onPoint(team)
 {
     var lib = document.getElementById("");
+    module.onPoint();
     closeMenu();
 }
 
@@ -81,4 +84,5 @@ function onSetFinished()
 {
     
 }
+
 
