@@ -16,7 +16,7 @@ var fontSize;
 Prepares the canvas to be drawn on by storing the canvas object, context, width,
 and height as well as sets canvasReady to true.
 */
-function init(modfile)
+function init()
 {
     scale = 3;
     canvas = document.getElementById("myCanvas");
@@ -35,8 +35,7 @@ function init(modfile)
 canvas.addEventListener('mousedown', function(event) {
     openMenu();
         }, false);
-
-    onStart(modfile);
+    onStart();
 }
 
 /*
