@@ -67,22 +67,26 @@ function onPoint(team)
 
 function onSubstitution()
 {
+    module.onSubstitution();
     closeMenu();
 }
 
 function onTimeout()
 {
+    module.onTimeout();
     closeMenu();
 }
 
 function onPenalty()
 {
+    module.onPenalty();
     closeMenu();
 }
 
 function onSetFinished()
 {
-    
+    module.onSetFinished();
+    closeMenu();
 }
 
 
