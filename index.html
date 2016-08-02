@@ -14,9 +14,8 @@
 <body onload="init()">
 
 <div id = "myBook" class = "book">
-<canvas class = "markings" id="myCanvas">
+<canvas class = "markings" id="myCanvas"></canvas>
 
-</canvas>
 </div>
 
 <div id="overlay" class="overlay">
@@ -26,16 +25,41 @@
   <div class="left">
     <a href="#" onclick="onPoint('a')">Point</a>
     <a href="#" onclick="onTimeout('a')">Timeout</a>
-    <a href="#" onclick="onSubstitution('a')">Substitution</a>
+    <a href="#" onclick="openSubMenu()">Substitution</a>
     <a href="#" onclick="onPenalty('a')">Penalty</a>
   </div>
 
   <div class="right">
     <a href="#" onclick="onPoint('b')">Point</a>
     <a href="#" onclick="onTimeout('b')">Timeout</a>
-    <a href="#" onclick="onSubstitution('b')">Substitution</a>
+    <a href="#" onclick="openSubMenu()">Substitution</a>
     <a href="#" onclick="onPenalty('b')">Penalty</a>
   </div>
+  </div>
+</div>
+
+<div id="subOverlay" class="subOverlay">
+  <a href="javascript:void(0)" class="subbtn" onclick="closeMenu()">Sub</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeSubMenu()">&times;</a>
+  <div class="overlay-content">
+  <div class="left">
+    <p id="sub1">I</h1>
+    <p id="sub2">II</h1>
+    <p id="sub3">III</h1>
+    <p id="sub4">IV</h1>
+    <p id="sub5">V</h1>
+    <p id="sub6">VI</h1>
+  </div>
+
+  <div class = "right">
+    <input type="text" id="subin1">
+    <input type="text" id="subin2">
+    <input type="text" id="subin3">
+    <input type="text" id="subin4">
+    <input type="text" id="subin5">
+    <input type="text" id="subin6">
+</div>
+
   </div>
 </div>
 
