@@ -6,7 +6,16 @@ function openMenu() {
     document.getElementById("overlay").style.width = "100%";
 }
 
-/* Close when someone clicks on the "x" symbol inside the overlay */
 function closeMenu() {
     document.getElementById("overlay").style.width = "0%";
+    closeSubMenu();
 }
+
+function openSubMenu() {
+    document.getElementById("subOverlay").style.width = "100%";
+}
+
+function closeSubMenu() {
+    document.getElementById("subOverlay").style.width = "0%";
+}
+
