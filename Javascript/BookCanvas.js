@@ -35,7 +35,8 @@ function init()
 canvas.addEventListener('mousedown', function(event) {
     openMenu();
         }, false);
-    onStart();
+    var startingData = {teamA: "teamA", teamB: "teamB", timeoutCap: 2, aServe: true};
+    onStart(startingData);
 }
 
 /*
@@ -92,13 +93,20 @@ function triangleText(xPercent, yPercent, text)
     drawTriangle(xLocation - (fontWidth / 4), yLocation - (fontHeight / 1.25), fontWidth, fontHeight);
 }
 
+function measureText(text)
+{
+    if(!canvasReady)
+        return -1;
+    return context.measureText(text).width;
+}
+
 function clearRect(xPercent, yPercent, xPercent2, yPercent2)
 {
     if(!canvasReady)
         return;
     var dx = xPercent2 - xPercent;
     var dy = yPercent2 - yPercent;
-    context.clearRect(xPercent * width * scale, yPercent * height * scale, dx * scale * width, yPercent2 * height * scale);
+    context.clearRect(xPercent * width * scale, yPercent * height * scale, dx * scale * width, dy * height * scale);
 }
 
 /*
