@@ -48,10 +48,10 @@ var onSetFinished;
 /*
 Called when the set is started.
 */
-function onStart()
+function onStart(startingData)
 {
     module = getModule();
-    module.onStart();
+    module.onStart(startingData);
 }
 
 /*
@@ -61,31 +61,31 @@ team: l (left) or r (right) depending on which point button was pushed.
 function onPoint(team)
 {
     var lib = document.getElementById("");
-    module.onPoint();
+    module.onPoint(team);
     closeMenu();
 }
 
-function onSubstitution()
+function onSubstitution(team)
 {
     module.onSubstitution();
     closeMenu();
 }
 
-function onTimeout()
+function onTimeout(team)
 {
-    module.onTimeout();
+    module.onTimeout(team);
     closeMenu();
 }
 
-function onPenalty()
+function onPenalty(team)
 {
-    module.onPenalty();
+    module.onPenalty(team);
     closeMenu();
 }
 
-function onSetFinished()
+function onSetFinished(team)
 {
-    module.onSetFinished();
+    module.onSetFinished(team);
     closeMenu();
 }
 
