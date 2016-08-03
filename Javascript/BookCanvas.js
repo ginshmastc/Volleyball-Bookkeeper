@@ -34,9 +34,34 @@ function init()
     canvasReady = true;
 canvas.addEventListener('mousedown', function(event) {
     openMenu();
+drawText(.15, .15, "init");
         }, false);
-    var startingData = {teamA: "teamA", teamB: "teamB", timeoutCap: 2, aServe: true};
+    var startingData = {teamA: "teamA", teamB: "teamB", timeoutCap: 2, aServe: true,
+aLineup: [7,6,5,4,3,2,1], bLineup: [1,2,3,4,5,6,7]};
     onStart(startingData);
+}
+
+function loadScript(url, callback){
+
+    var script = document.createElement("script")
+    script.type = "text/javascript";
+
+    if (script.readyState){  //IE
+        script.onreadystatechange = function(){
+            if (script.readyState == "loaded" ||
+                    script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    } else {  //Others
+        script.onload = function(){
+            callback();
+        };
+    }
+
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
 }
 
 /*
