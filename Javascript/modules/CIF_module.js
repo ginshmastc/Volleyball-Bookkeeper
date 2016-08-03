@@ -23,6 +23,7 @@ function getModule() {
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
             a_points = 0;
+            a_lineup = startingData.aLineup;
             a_teamName = startingData.teamA;
             a_liberoServeRotation = -1;//libero has not served yet
             a_setsWon = 0;
@@ -37,6 +38,7 @@ function getModule() {
             b_columns = [0, 0, 0, 0, 0, 0];
 
             b_points = 0;
+            b_lineup = startingData.bLineup;
             b_teamName = startingData.teamB;
             b_liberoServeRotation = -1;//libero has not served yet
             b_setsWon = 0;
@@ -53,15 +55,28 @@ function getModule() {
 
             //draw initial fields
             setFontSize(30);
-
             drawText(.15, .1, a_teamName);
             drawText(.7, .1, b_teamName);
+
+            //fill in liberos
+            setFontSize(18);
+            drawText(.08, .11, a_lineup[6]);
+            drawText(.63, .11, b_lineup[6]);
+
+            var LINEUP_LEN = 6;
+            //fill in lineups
+            setFontSize(18);
+            for(i = 0; i < LINEUP_LEN; i++)
+            {
+                drawText(.04, .17 + (i * .127), a_lineup[i]);
+                drawText(.59, .17 + (i * .127), b_lineup[i]);
+            }
 
             col = "blue";
             setFontColor(col);
             
             setFontSize(20);
-            drawText(.47, .1, a_points);
+            drawText(.48, .1, a_points);
             drawText(.52, .1, b_points);
         };
 
@@ -120,7 +135,7 @@ Draw an "R" on the a marker position
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
-        circleText(a_markers[a_rotationPosition - 1], .18 + (.063 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
+        circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
         a_markers[a_rotationPosition - 1] += textLen;
     }
 
@@ -135,7 +150,7 @@ Draw an "R" on the b marker position
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        circleText(b_markers[b_rotationPosition - 1], .18 + (.063 * (b_columns[a_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
+        circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[a_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
         b_markers[b_rotationPosition - 1] += textLen;
     }
 
@@ -150,7 +165,7 @@ Draw a point on the A marker position
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
-        circleText(a_markers[a_rotationPosition - 1], .18 + (.063 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
+        circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
         a_markers[a_rotationPosition - 1] += textLen;
     }
 
@@ -165,7 +180,7 @@ Draw a point on the B marker position
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        circleText(b_markers[b_rotationPosition - 1], .18 + (.063 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
+        circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
         b_markers[b_rotationPosition - 1] += textLen;
     }
 
@@ -235,7 +250,7 @@ team: a or b depending on which timeout button was pressed.
             {
                 if(a_timeouts < timeoutCap)
                 {
-                    drawText(.45, .90 + (.065 * a_timeouts), a_points + " - " + b_points);
+                    drawText(.455, .90 + (.064 * a_timeouts), a_points + " - " + b_points);
                     a_timeouts++;
                 }
             }
@@ -243,7 +258,7 @@ team: a or b depending on which timeout button was pressed.
             {
                 if(b_timeouts < timeoutCap)
                 {
-                    drawText(.5, .90 + (.065 * b_timeouts), a_points + " - " + b_points);
+                    drawText(.505, .90 + (.064 * b_timeouts), a_points + " - " + b_points);
                     b_timeouts++;
                 }
             }
