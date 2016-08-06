@@ -21,13 +21,30 @@
 }
 
 .left {
+    width: 35%;
     float: left;
 }
 
 .right {
+    width: 35%;
     float: right;
 }
 
+.mid {
+    width: 23%;
+    float: left;
+}
+
+.mid input {
+    width: 50%;
+    text-align: center;
+}
+
+label {
+    display: block;
+    color: white;
+    font-size: 16px;
+}
 .subOverlay {
     height: auto;
     width: 0;
@@ -41,7 +58,33 @@
     transition: 0.5s;
 }
 
-.overlay a, .subOverlay a {
+.subbtn {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: orange;
+    display: block;
+    transition: 0.3s;
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    font-size: 30px !important;
+}
+
+.penOverlay {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay a, .closebtn {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
@@ -49,6 +92,7 @@
     display: block;
     transition: 0.3s;
 }
+
 
 input {
     margin: 26px;
@@ -68,41 +112,46 @@ p {
 
 .closebtn {
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 30px;
     font-size: 30px !important;
 }
 
-.subbtn {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    font-size: 30px !important;
-}
-
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 400px) {
+    label {
+        font-size: 12px;
+    }
+    
     .overlay a, .subOverlay p {
     font-size: 20px;
     margin: 14px;
-}
+    }
+
     input {
     margin: 14px;
     font-size: 14px;
     }
+
     .closebtn, .subbtn {
         font-size: 20px !important;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 525px) {
+    label {
+        font-size: 12px;
+    }
+    
     .overlay a, .subOverlay p {
     font-size: 20px;
     margin: 14px;
-}
+    }
+
     input {
     margin: 14px;
     font-size: 14px;
     }
+
     .closebtn, .subbtn {
         font-size: 20px !important;
     }
