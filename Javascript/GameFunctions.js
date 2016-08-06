@@ -37,13 +37,9 @@ var subCap; //max number of subs per team per set (depends on format)
 var timeoutCap; //max number of timeouts per team (usually 2)
 var aServe; //boolean if team a is serving
 var input; //array containing all input
+var comments;//additional comments
 
 var module;
-var onPoint;
-var onSubstitution;
-var onTimeout;
-var onPenalty;
-var onSetFinished;
 
 /*
 Called when the set is started.
@@ -65,9 +61,9 @@ function onPoint(team)
     closeMenu();
 }
 
-function onSubstitution(team)
+function onSubstitution(subs, team)
 {
-    module.onSubstitution();
+    module.onSubstitution(subs, team);
     closeMenu();
 }
 
@@ -77,9 +73,9 @@ function onTimeout(team)
     closeMenu();
 }
 
-function onPenalty(team)
+function onPenalty(team, additionalComments, award)
 {
-    module.onPenalty(team);
+    module.onPenalty(team, additionalComments, award);
     closeMenu();
 }
 
