@@ -53,7 +53,7 @@ function setStartingData(data)
     script.onload = function() {
       onStart(startingData);
     };
-    script.src = "Javascript/modules/CIF_module.js";
+    script.src = startingData.module;
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
