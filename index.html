@@ -24,21 +24,24 @@
   <div class="left">
     <a href="#" onclick="onPoint('a')">Point</a>
     <a href="#" onclick="onTimeout('a')">Timeout</a>
-    <a href="#" onclick="openSubMenu('a')">Substitution</a>
-    <a href="#" onclick="onPenalty('a')">Penalty</a>
+    <a href="#" onclick="openPenMenu('a')">Substitution</a>
+    <a href="#" onclick="openPenMenu('a')">Penalty</a>
   </div>
 
   <div class="right">
     <a href="#" onclick="onPoint('b')">Point</a>
     <a href="#" onclick="onTimeout('b')">Timeout</a>
     <a href="#" onclick="openSubMenu('b')">Substitution</a>
-    <a href="#" onclick="onPenalty('b')">Penalty</a>
+    <a href="#" onclick="openPenMenu('b')">Penalty</a>
+  </div>
+  <div class = "mid">
+  <label>Libero Served<input type="checkbox" id="libero" value="liberoServed"></label>
   </div>
   </div>
 </div>
 
 <div id="subOverlay" class="subOverlay">
-  <a href="javascript:void(0)" class="subbtn" onclick="closeMenu()">Sub</a>
+  <a href="javascript:void(0)" class="subbtn" onclick="subPressed()">Sub</a>
   <a href="javascript:void(0)" class="closebtn" onclick="closeSubMenu()">&times;</a>
   <div class="overlay-content">
   <div class="left">
@@ -57,8 +60,17 @@
     <input type="text" id="subin4">
     <input type="text" id="subin5">
     <input type="text" id="subin6">
+  </div>
+
+  </div>
 </div>
 
+<div id="penOverlay" class="penOverlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closePenMenu()">&times;</a>
+  <div class="overlay-content">
+  <input type="checkbox" id="award" value="Point Awarded" checked>
+  <textarea id="comments" rows="4" cols="50">
+  </textarea> 
   </div>
 </div>
 
