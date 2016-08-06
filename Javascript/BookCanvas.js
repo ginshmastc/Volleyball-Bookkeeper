@@ -33,11 +33,18 @@ function init()
     context.font = "12px Arial";
     context.fillStyle = "black";
     canvasReady = true;
-canvas.addEventListener('mousedown', function(event) {
+
+    canvas.addEventListener('mousedown', function(event) {
     openMenu();
         }, false);
+
+    var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false}';
+    setStartingData(test);
 }
 
+/*
+Inputs the starting match data.
+*/
 function setStartingData(data)
 {
     startingData = JSON.parse(data);
@@ -48,25 +55,6 @@ function setStartingData(data)
     };
     script.src = "Javascript/modules/CIF_module.js";
     document.getElementsByTagName('head')[0].appendChild(script);
-}
-
-function loadScript(url, callback){
-
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-
-    if (script.readyState){  //IE
-        script.onreadystatechange = function(){
-            if (script.readyState == "loaded" ||
-                    script.readyState == "complete"){
-                script.onreadystatechange = null;
-                callback();
-            }
-        };
-    }
-
-    script.src = url;
-    document.getElementsByTagName("head")[0].appendChild(script);
 }
 
 /*
@@ -82,7 +70,6 @@ function drawText(xPercent, yPercent, text)
     var xLocation = xPercent * width * scale;
     var yLocation = yPercent * height * scale;
     context.fillText(text, xLocation, yLocation);
-    
 }
 
 /*
