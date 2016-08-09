@@ -25,7 +25,7 @@ function getModule() {
     var a_subList;
     var b_subList;
 
-    var onStart = function (startingData)
+    var onStart = function ()
         {
 
             var bgimage = "url('Images/CIF_image.png')";
