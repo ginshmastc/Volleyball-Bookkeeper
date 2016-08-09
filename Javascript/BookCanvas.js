@@ -47,8 +47,9 @@ Inputs the starting match data.
 */
 function setStartingData(data)
 {
+	drawText(.05, .05, "test");
     startingData = JSON.parse(data);
-drawText(.05, .05, "test");
+
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
