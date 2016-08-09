@@ -48,10 +48,10 @@ Inputs the starting match data.
 function setStartingData(data)
 {
     startingData = JSON.parse(data);
-
+drawText(.05, .05, "test");
     var script = document.createElement('script');
     script.onload = function() {
-      onStart(startingData);
+      onStart();
     };
     script.src = startingData.module;
     document.getElementsByTagName('head')[0].appendChild(script);
