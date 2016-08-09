@@ -44,10 +44,10 @@ var module;
 /*
 Called when the set is started.
 */
-function onStart(startingData)
+function onStart()
 {
     module = getModule();
-    module.onStart(startingData);
+    module.onStart();
 }
 
 /*
