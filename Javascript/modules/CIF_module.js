@@ -25,7 +25,7 @@ function getModule() {
     var a_subList;
     var b_subList;
 
-    var onStart = function ()
+    var onStart = function (startingData)
         {
 
             var bgimage = "url('Images/CIF_image.png')";
@@ -293,13 +293,17 @@ team: which team made the subs.
             }
         };
 
+/*
+Checks for sub legality and makes a substitution if possible.
+*/
     function sub(team, sub, position)
     {
         if(team == 'a')
         {
             if(a_subs >= subCap)
                 return ERROR_NOMORESUBS;
-            
+            if(sub == a_lineup[6])
+                return ERROR_ILLEGALSUB;
             for(i = 0; i < a_subList.length; i++)
                 if(a_subList[i][1] == sub)
                     if(a_subList[i][0] == position)
@@ -325,7 +329,8 @@ team: which team made the subs.
         {
             if(b_subs >= subCap)
                 return ERROR_NOMORESUBS;
-            
+            if(sub == b_lineup[6])
+                return ERROR_ILLEGALSUB;
             for(i = 0; i < b_subList.length; i++)
                 if(b_subList[i][1] == sub)
                     if(b_subList[i][0] == position)
@@ -351,6 +356,9 @@ team: which team made the subs.
         return 0;
     }
 
+/*
+draws lineups including previous substitutions.
+*/
     function drawLineups()
     {
         setFontSize(18);
@@ -404,7 +412,7 @@ team: which team made the subs.
             if(pos_subs[p-1] > 0)//if there is more than 1 sub, slash the previous sub
             {
                 setFontSize(32);
-                drawText(.59 + (.025*((pos_subs[p-1]-1) % 4)), .052 + (p * .127) + (multiplier2 * .0635), "\\");
+                drawText(.6 + (.025*((pos_subs[p-1]-1) % 4)), .052 + (p * .127) + (multiplier2 * .0635), "\\");
             }
 
             if(pos_subs[p-1] >= 8)//no space for more than 8 subs
@@ -424,6 +432,7 @@ team: a or b depending on which timeout button was pressed.
 */
     var onTimeout = function (team)
         {
+            setFontSize(12);
             if(team == 'a')
             {
                 if(a_timeouts < timeoutCap)
@@ -459,7 +468,7 @@ award: true if a point is awarded, false if not
     var onPenalty = function (team, additionalComments, award)
         {
             comments += additionalComments;
-            award = true;
+award = true;
             if(!award)
                 return;
             if(team == 'a')
@@ -480,6 +489,9 @@ award: true if a point is awarded, false if not
             }
         };
 
+/*
+Called when the set is finished.  Package any game data and send to device.
+*/
     var onSetFinished = function ()
         {
             
