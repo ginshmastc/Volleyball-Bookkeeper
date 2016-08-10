@@ -48,6 +48,7 @@ Inputs the starting match data.
 function setStartingData(data)
 {
 	drawText(.05, .05, "test");
+	/*
     startingData = JSON.parse(data);
 
     var script = document.createElement('script');
@@ -56,6 +57,7 @@ function setStartingData(data)
     };
     script.src = startingData.module;
     document.getElementsByTagName('head')[0].appendChild(script);
+    */
 }
 
 /*
