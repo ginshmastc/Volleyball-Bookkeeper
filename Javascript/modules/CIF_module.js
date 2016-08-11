@@ -14,7 +14,7 @@ function getModule() {
     var b_marker;
     var b_column;
     var A_MARKER_START = .15;
-    var A_MARKER_END = .47;
+    var A_MARKER_END = .465;
     var B_MARKER_START = .7;
     var B_MARKER_END = .98;
     var CIF_SUBCAP = 18;
@@ -84,7 +84,7 @@ function getModule() {
             drawScore();
         };
 
-    var onPoint = function (team)
+    var onPoint = function (team, libero)
         {
             setFontSize(18);
             if(team == 'a')
@@ -92,14 +92,14 @@ function getModule() {
                 a_points++;
                 if(aServe)//serving team scored
                 {
-                    drawAPoint();
+                    drawAPoint(libero);
                 }
                 else//sideout
                 {
                     drawBR();
                     aServe = true;
                     rotateA();
-                    drawAPoint();
+                    drawAPoint(libero);
                 }
 
             }
@@ -108,14 +108,14 @@ function getModule() {
                 b_points++;
                 if(!aServe)//serving team scored
                 {
-                    drawBPoint();
+                    drawBPoint(libero);
                 }
                 else//sideout
                 {
                     drawAR();
                     aServe = false;
                     rotateB();
-                    drawBPoint();
+                    drawBPoint(libero);
                 }
 
             }
@@ -137,11 +137,14 @@ Draw an "R" on the a marker position
     function drawAR()
     {
         var textLen = (measureText("R_") / width) / scale;
+
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
+        if(a_columns[a_rotationPosition - 1] > 1)
+            return;
         circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
         a_markers[a_rotationPosition - 1] += textLen;
     }
@@ -157,6 +160,8 @@ Draw an "R" on the b marker position
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
+        if(b_columns[b_rotationPosition - 1] > 1)
+            return;
         circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
         b_markers[b_rotationPosition - 1] += textLen;
     }
@@ -164,16 +169,22 @@ Draw an "R" on the b marker position
 /*
 Draw a point on the A marker position
 */
-    function drawAPoint()
+    function drawAPoint(libero)
     {
         setFontSize(18);
+
         var textLen = (measureText(a_points+"_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
-        circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
+        if(a_columns[a_rotationPosition - 1] > 1)
+            return;
+        if(!libero)
+            circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
+        else
+            triangleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
         a_markers[a_rotationPosition - 1] += textLen;
     }
 
@@ -183,12 +194,15 @@ Draw a point on the A text
     function drawAText(text)
     {
         setFontSize(12);
+
         var textLen = (measureText(text+"_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
+        if(a_columns[a_rotationPosition - 1] > 1)
+            return;
         drawText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), text);
         a_markers[a_rotationPosition - 1] += textLen;
     }
@@ -200,29 +214,38 @@ text: text being drawn.
     function drawBPoint()
     {
         setFontSize(18);
+
         var textLen = (measureText(b_points+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
+        if(b_columns[b_rotationPosition - 1] > 1)
+            return;
+        if(!libero)
+            circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
+        else
+            triangleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
         b_markers[b_rotationPosition - 1] += textLen;
     }
 
 /*
 Draw a point on the B marker position.
-text: text being drawn
+text: text being drawn.
 */
     function drawBText(text)
     {
         setFontSize(12);
+
         var textLen = (measureText(text+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
+        if(b_columns[b_rotationPosition - 1] > 1)
+            return;
         drawText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), text);
         b_markers[b_rotationPosition - 1] += textLen;
     }
