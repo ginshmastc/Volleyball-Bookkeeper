@@ -21,22 +21,22 @@
 
   <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
   <div class="overlay-content">
-  <div class="left">
-    <a href="#" onclick="onPoint('a')">Point</a>
-    <a href="#" onclick="onTimeout('a')">Timeout</a>
-    <a href="#" onclick="openSubMenu('a')">Substitution</a>
-    <a href="#" onclick="openPenMenu('a')">Penalty</a>
-  </div>
+    <div class="left">
+      <a href="#" onclick="pointPressed('a')">Point</a>
+      <a href="#" onclick="onTimeout('a')">Timeout</a>
+      <a href="#" onclick="openSubMenu('a')">Substitution</a>
+      <a href="#" onclick="openPenMenu('a')">Penalty</a>
+    </div>
 
-  <div class="right">
-    <a href="#" onclick="onPoint('b')">Point</a>
-    <a href="#" onclick="onTimeout('b')">Timeout</a>
-    <a href="#" onclick="openSubMenu('b')">Substitution</a>
-    <a href="#" onclick="openPenMenu('b')">Penalty</a>
-  </div>
-  <div class = "mid">
-  <label>Libero Served<input type="checkbox" id="libero" value="liberoServed"></label>
-  </div>
+    <div class="right">
+      <a href="#" onclick="pointPressed('b')">Point</a>
+      <a href="#" onclick="onTimeout('b')">Timeout</a>
+      <a href="#" onclick="openSubMenu('b')">Substitution</a>
+      <a href="#" onclick="openPenMenu('b')">Penalty</a>
+    </div>
+    <div class = "mid">
+      <label>Libero Served<input type="checkbox" id="libero" style="display: inline-block" value="liberoServed"></label>
+    </div>
   </div>
 </div>
 
@@ -45,12 +45,12 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeSubMenu()">&times;</a>
   <div class="overlay-content">
   <div class="left">
-    <p id="sub1">I</h1>
-    <p id="sub2">II</h1>
-    <p id="sub3">III</h1>
-    <p id="sub4">IV</h1>
-    <p id="sub5">V</h1>
-    <p id="sub6">VI</h1>
+    <p id="sub1">I</p>
+    <p id="sub2">II</p>
+    <p id="sub3">III</p>
+    <p id="sub4">IV</p>
+    <p id="sub5">V</p>
+    <p id="sub6">VI</p>
   </div>
 
   <div class = "right">
@@ -66,11 +66,18 @@
 </div>
 
 <div id="penOverlay" class="penOverlay">
+
   <a href="javascript:void(0)" class="closebtn" onclick="closePenMenu()">&times;</a>
   <div class="overlay-content">
-  <input type="checkbox" id="award" value="Point Awarded" checked>
-  <textarea id="comments" rows="4" cols="50">
-  </textarea> 
+    <div class = "right">
+      <label>Point Awarded<input style = "display: inline-block" type="checkbox" id="award" value="Point Awarded" checked></label>
+      <a href="javascript:void(0)" class="penbtn" onclick="penaltyPressed()">Penalty</a>
+    </div>
+    <div class = "left">
+      <label align = "left"> Comments</label>
+      <textarea style = "width: 100%" id="comments" rows="4" cols="50">
+      </textarea> 
+    </div>
   </div>
 </div>
 
