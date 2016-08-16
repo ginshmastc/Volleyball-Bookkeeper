@@ -14,7 +14,7 @@ function getModule() {
     var b_marker;
     var b_column;
     var A_MARKER_START = .15;
-    var A_MARKER_END = .465;
+    var A_MARKER_END = .47;
     var B_MARKER_START = .7;
     var B_MARKER_END = .98;
     var CIF_SUBCAP = 18;
@@ -22,8 +22,17 @@ function getModule() {
     var LINEUP_LEN = 6;
     var col;
 
+    var a_scoreMarks;
+    var b_scoreMarks;
+    var MARK_CAP = 40;
+
     var a_subList;
     var b_subList;
+
+    var SLASH = 0;
+    var CIRCLE = 1;
+    var TRIANGLE = 2;
+    var SQUARE = 3;
 
     var onStart = function (startingData)
         {
@@ -57,6 +66,9 @@ function getModule() {
 
             a_subList = [[1, a_lineup[0]], [2, a_lineup[1]], [3, a_lineup[2]], [4, a_lineup[3]], [5, a_lineup[4]], [6, a_lineup[5]]];
             b_subList = [[1, b_lineup[0]], [2, b_lineup[1]], [3, b_lineup[2]], [4, b_lineup[3]], [5, b_lineup[4]], [6, b_lineup[5]]];
+
+            a_scoreMarks = new Array(MARK_CAP);
+            b_scoreMarks = new Array(MARK_CAP);
 
             timeoutCap = CIF_TIMEOUTS;
             subCap = CIF_SUBCAP;
@@ -96,10 +108,10 @@ function getModule() {
                 }
                 else//sideout
                 {
-                    drawBR();
+                    drawBR(libero);
                     aServe = true;
                     rotateA();
-                    drawAPoint(libero);
+                    drawAText(a_points);
                 }
 
             }
@@ -112,14 +124,16 @@ function getModule() {
                 }
                 else//sideout
                 {
-                    drawAR();
+                    drawAR(libero);
                     aServe = false;
                     rotateB();
-                    drawBPoint(libero);
+                    drawBText(b_points);
                 }
 
             }
             drawScore();
+            if(libero)
+                drawLiberoTriangles();
         };
 
 function drawScore()
@@ -132,27 +146,32 @@ function drawScore()
 }
 
 /*
-Draw an "R" on the a marker position
+Draw an "R" on the a marker position.
+libero: true if libero served.
 */
-    function drawAR()
+    function drawAR(libero)
     {
         var textLen = (measureText("R_") / width) / scale;
-
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
-        if(a_columns[a_rotationPosition - 1] > 1)
-            return;
-        circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
+        if(!libero)
+            circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
+        else
+        {
+            triangleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
+            a_liberoServeRotation = a_rotationPosition;
+        }
+
         a_markers[a_rotationPosition - 1] += textLen;
     }
 
 /*
-Draw an "R" on the b marker position
+Draw an "R" on the b marker position.
 */
-    function drawBR()
+    function drawBR(libero)
     {
         var textLen = (measureText("R_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
@@ -160,50 +179,38 @@ Draw an "R" on the b marker position
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        if(b_columns[b_rotationPosition - 1] > 1)
-            return;
-        circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
+        if(!libero)
+            circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
+        else
+        {
+            triangleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
+            b_liberoServeRotation = b_rotationPosition;
+        }
+
         b_markers[b_rotationPosition - 1] += textLen;
     }
 
 /*
-Draw a point on the A marker position
+Draw a point on the A marker position.
 */
     function drawAPoint(libero)
     {
         setFontSize(18);
-
         var textLen = (measureText(a_points+"_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
         }
-        if(a_columns[a_rotationPosition - 1] > 1)
-            return;
+
         if(!libero)
             circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
         else
-            triangleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
-        a_markers[a_rotationPosition - 1] += textLen;
-    }
-
-/*
-Draw a point on the A text
-*/
-    function drawAText(text)
-    {
-        setFontSize(12);
-
-        var textLen = (measureText(text+"_") / width) / scale;
-        if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
-            a_columns[a_rotationPosition - 1]++;
-            a_markers[a_rotationPosition - 1] = A_MARKER_START;
+            triangleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), a_points);
+            a_liberoServeRotation = a_rotationPosition;
         }
-        if(a_columns[a_rotationPosition - 1] > 1)
-            return;
-        drawText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), text);
+
         a_markers[a_rotationPosition - 1] += textLen;
     }
 
@@ -211,41 +218,58 @@ Draw a point on the A text
 Draw a point on the B marker position.
 text: text being drawn.
 */
-    function drawBPoint()
+    function drawBPoint(libero)
     {
         setFontSize(18);
-
         var textLen = (measureText(b_points+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        if(b_columns[b_rotationPosition - 1] > 1)
-            return;
         if(!libero)
+        {
             circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
+        }
         else
+        {
             triangleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), b_points);
+            b_liberoServeRotation = b_rotationPosition;
+        }
+
         b_markers[b_rotationPosition - 1] += textLen;
     }
 
 /*
+Draw a point on the A text.
+*/
+    function drawAText(text)
+    {
+        setFontSize(16);
+        var textLen = (measureText(text+"_") / width) / scale;
+        if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
+        {
+            a_columns[a_rotationPosition - 1]++;
+            a_markers[a_rotationPosition - 1] = A_MARKER_START;
+        }
+        drawText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), text);
+        a_markers[a_rotationPosition - 1] += textLen;
+    }
+
+
+/*
 Draw a point on the B marker position.
-text: text being drawn.
+text: text being drawn
 */
     function drawBText(text)
     {
-        setFontSize(12);
-
+        setFontSize(16);
         var textLen = (measureText(text+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
         }
-        if(b_columns[b_rotationPosition - 1] > 1)
-            return;
         drawText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), text);
         b_markers[b_rotationPosition - 1] += textLen;
     }
@@ -318,6 +342,9 @@ team: which team made the subs.
 
 /*
 Checks for sub legality and makes a substitution if possible.
+team: which team is subbing.
+sub: number of sub.
+position: rotational position of sub.
 */
     function sub(team, sub, position)
     {
@@ -449,6 +476,24 @@ draws lineups including previous substitutions.
         setFontColor(col);
     }
 
+function drawLiberoTriangles()
+{
+drawText(.05,.05, a_liberoServeRotation + "" + b_liberoServeRotation);
+    if(a_liberoServeRotation > 0)
+        triangleText(.01, .08 + (a_liberoServeRotation * .125), "   ");
+    if(b_liberoServeRotation > 0)
+        triangleText(.56, .08 + (b_liberoServeRotation * .125), "   ");
+
+}
+
+/*
+Slash through point numbers.
+*/
+    function slashPoints()
+    {
+        
+    }
+
 /*
 Called when one of the timeout buttons is pressed.
 team: a or b depending on which timeout button was pressed.
@@ -466,7 +511,7 @@ team: a or b depending on which timeout button was pressed.
                 if(aServe)
                     drawAText("T ");
                 else
-                    drawAText("Tx");
+                    drawBText("Tx");
             }
             else if(team == 'b')
             {
@@ -478,7 +523,7 @@ team: a or b depending on which timeout button was pressed.
                 if(!aServe)
                     drawBText("T ");
                 else
-                    drawBText("Tx");
+                    drawAText("Tx");
             }
         };
 
@@ -491,7 +536,6 @@ award: true if a point is awarded, false if not
     var onPenalty = function (team, additionalComments, award)
         {
             comments += additionalComments;
-award = true;
             if(!award)
                 return;
             if(team == 'a')
