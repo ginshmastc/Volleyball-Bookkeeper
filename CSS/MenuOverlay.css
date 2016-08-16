@@ -14,29 +14,28 @@
 .overlay-content {
     position: relative;
     top: 25%;
-    width: 100%;
-    height:100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .left {
-    width: 35%;
+    width: 30%;
     float: left;
 }
 
 .right {
-    width: 35%;
+    width: 30%;
     float: right;
 }
 
 .mid {
-    width: 23%;
+    width: 30%;
     float: left;
 }
 
 .mid input {
-    width: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
     text-align: center;
 }
 
@@ -62,7 +61,7 @@ label {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: orange;
+    color: blue;
     display: block;
     transition: 0.3s;
     position: absolute;
@@ -104,6 +103,7 @@ input {
 p {
     font-size: 26px;
     color: white;
+    align: left;
 }
 
 .overlay a:hover, .overlay a:focus {
@@ -117,7 +117,16 @@ p {
     font-size: 30px !important;
 }
 
-@media screen and (max-height: 400px) {
+.penbtn {
+    color: red;
+    bottom: 5px;
+    left: 30px;
+    text-decoration: none;
+    font-size: 36px;
+    font-size: 30px !important;
+}
+
+@media screen and (max-height: 450px) {
     label {
         font-size: 12px;
     }
@@ -137,7 +146,7 @@ p {
     }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 550px) {
     label {
         font-size: 12px;
     }
