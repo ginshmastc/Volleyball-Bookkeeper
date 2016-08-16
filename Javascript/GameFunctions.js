@@ -54,35 +54,51 @@ function onStart(startingData)
 Called when a point button is pushed.
 team: l (left) or r (right) depending on which point button was pushed.
 */
-function onPoint(team)
+function onPoint(team, lib)
 {
-    var lib = document.getElementById("");
-    module.onPoint(team);
+    module.onPoint(team, lib);
     closeMenu();
 }
 
+/*
+Called when the substitution button is pressed.
+subs: list of input values from substitution list.
+team: which team made the substitution.
+*/
 function onSubstitution(subs, team)
 {
     module.onSubstitution(subs, team);
     closeMenu();
 }
 
+/*
+Called when a timeout button is pressed.
+team: which side timeout button is pressed.
+*/
 function onTimeout(team)
 {
     module.onTimeout(team);
     closeMenu();
 }
 
+/*
+Called when a penalty button is pressed.
+team: which side penalty button is pressed.
+additionalComments: string for user comments.
+award: true if a point should be awarded to the opposing team.
+*/
 function onPenalty(team, additionalComments, award)
 {
     module.onPenalty(team, additionalComments, award);
     closeMenu();
 }
 
+/*
+Called when the set is finished.
+*/
 function onSetFinished(team)
 {
     module.onSetFinished(team);
     closeMenu();
 }
-
 
