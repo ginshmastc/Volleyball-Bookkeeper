@@ -5,6 +5,21 @@ var curTeam;
 
 function openMenu() {
     document.getElementById("overlay").style.width = "100%";
+    if(aServe)
+    {
+        if(a_liberoServeRotation == a_rotationPosition)
+            document.getElementById('libero').checked = true;
+        else
+            document.getElementById('libero').checked = false;
+    }
+    else
+    {
+        if(b_liberoServeRotation == b_rotationPosition)
+            document.getElementById('libero').checked = true;
+        else
+            document.getElementById('libero').checked = false;
+    }
+            
 }
 
 function closeMenu() {
@@ -12,7 +27,14 @@ function closeMenu() {
     closeSubMenu();
 }
 
+function pointPressed(team)
+{
+    var lib = document.getElementById("libero").checked;
+    onPoint(team, lib);
+}
+
 function openSubMenu(team) {
+    closePenMenu();
     curTeam = team;
     if(team == 'a')
     {
@@ -62,13 +84,13 @@ function subPressed() {
 
 function openPenMenu(team) {
     curTeam = team;
-        document.getElementById("penOverlay").style.width = "100%";
+    closeSubMenu();
+    document.getElementById("penOverlay").style.width = "100%";
 
 }
 
 function closePenMenu() {
-        document.getElementById("penOverlay").style.width = "0%";
-
+    document.getElementById("penOverlay").style.width = "0%";
 }
 
 function penaltyPressed()
@@ -76,4 +98,6 @@ function penaltyPressed()
     var com = document.getElementById('comments').value;
     var aw = document.getElementById('award').checked;
     onPenalty(curTeam, com, aw);
+    closePenMenu();
+    closeMenu();
 }
