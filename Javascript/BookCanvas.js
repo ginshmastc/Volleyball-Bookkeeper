@@ -82,9 +82,9 @@ function circleText(xPercent, yPercent, text)
 {
     if(!canvasReady)
         return;
+    drawText(xPercent, yPercent, text);
     var xLocation = xPercent * width * scale;
     var yLocation = yPercent * height * scale;
-    context.fillText(text, xLocation, yLocation);
 
     var fontWidth = context.measureText(text).width * 2;
     var fontHeight = context.measureText("M").width * 2;
@@ -173,7 +173,6 @@ height: height of the bounding rectangle.
 function drawEllipse(x, y, width, height) {
 	
     context.beginPath();
-  
     context.moveTo(x + (width / 2), y);
   
     context.bezierCurveTo(
