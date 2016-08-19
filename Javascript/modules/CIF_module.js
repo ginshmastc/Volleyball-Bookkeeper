@@ -478,6 +478,7 @@ draws lineups including previous substitutions.
 
 function drawLiberoTriangles()
 {
+drawText(.05,.05, a_liberoServeRotation + "" + b_liberoServeRotation);
     if(a_liberoServeRotation > 0)
         triangleText(.01, .08 + (a_liberoServeRotation * .125), "   ");
     if(b_liberoServeRotation > 0)
