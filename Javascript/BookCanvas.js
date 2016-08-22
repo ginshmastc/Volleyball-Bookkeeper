@@ -51,7 +51,7 @@ function setStartingData(data)
 
     var script = document.createElement('script');
     script.onload = function() {
-      onStart(startingData);
+      onStart();
     };
     script.src = startingData.module;
     document.getElementsByTagName('head')[0].appendChild(script);
