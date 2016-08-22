@@ -34,7 +34,7 @@ function getModule() {
     var TRIANGLE = 2;
     var SQUARE = 3;
 
-    var onStart = function (startingData)
+    var onStart = function ()
         {
 
             var bgimage = "url('Images/CIF_image.png')";
