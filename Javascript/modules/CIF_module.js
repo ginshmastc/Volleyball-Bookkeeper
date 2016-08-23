@@ -38,7 +38,7 @@ function getModule() {
         {
 
             var bgimage = "url('Images/CIF_image.png')";
-            document.getElementById("myBook").style.backgroundImage = bgimage;
+            //document.getElementById("myBook").style.backgroundImage = bgimage;
 
             a_points = 0;
             a_lineup = startingData.aLineup;
