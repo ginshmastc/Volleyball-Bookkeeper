@@ -46,17 +46,25 @@ Called when the set is started.
 */
 function onStart()
 {
+    initInput();
     module = getModule();
+    module.onStart();
+}
+
+function reset()
+{
     module.onStart();
 }
 
 /*
 Called when a point button is pushed.
 team: l (left) or r (right) depending on which point button was pushed.
+lib: is the libero box checked?
 */
 function onPoint(team, lib)
 {
     module.onPoint(team, lib);
+    addInput(new Node("p"+"\n"+team+"\n"+lib));
     closeMenu();
 }
 
@@ -68,6 +76,9 @@ team: which team made the substitution.
 function onSubstitution(subs, team)
 {
     module.onSubstitution(subs, team);
+    for(i=0; i<6; i++)
+        if(subs[i] != '')
+            addInput(new Node("s\n"+team+"\n"+(i + 1)+"\n"+subs[i]));
     closeMenu();
 }
 
@@ -78,6 +89,7 @@ team: which side timeout button is pressed.
 function onTimeout(team)
 {
     module.onTimeout(team);
+    addInput(new Node("t\n"+team));
     closeMenu();
 }
 
@@ -90,6 +102,18 @@ award: true if a point should be awarded to the opposing team.
 function onPenalty(team, additionalComments, award)
 {
     module.onPenalty(team, additionalComments, award);
+    addInput(new Node("e\n"+team+"\n"+award+"\n"+additionalComments));
+    closeMenu();
+}
+
+/*
+Called when the undo button is pressed.  Undoes the last input.
+*/
+function onUndo()
+{
+
+    removeInput();
+    module.onUndo();
     closeMenu();
 }
 
