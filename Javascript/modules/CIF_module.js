@@ -41,7 +41,7 @@ function getModule() {
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
             a_points = 0;
-            a_lineup = startingData.aLineup;
+            a_lineup = startingData.aLineup.slice(0);
             a_teamName = startingData.teamA;
             a_liberoServeRotation = -1;//libero has not served yet
             a_setsWon = 0;
@@ -51,12 +51,12 @@ function getModule() {
 
 //arrays of markers and columns
             a_markers = [A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START];
-            a_columns = [0, 0, 0, 0, 0, 0];
+            a_columns = [0,0,0,0,0,0];
             b_markers = [B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START];
-            b_columns = [0, 0, 0, 0, 0, 0];
+            b_columns = [0,0,0,0,0,0];
 
             b_points = 0;
-            b_lineup = startingData.bLineup;
+            b_lineup = startingData.bLineup.slice(0);
             b_teamName = startingData.teamB;
             b_liberoServeRotation = -1;//libero has not served yet
             b_setsWon = 0;
@@ -81,11 +81,13 @@ function getModule() {
 
             //draw initial fields
             setFontSize(30);
+            setFontColor("black");
             drawText(.15, .1, a_teamName);
             drawText(.7, .1, b_teamName);
 
             //fill in liberos
             setFontSize(18);
+            
             drawText(.08, .11, a_lineup[6]);
             drawText(.63, .11, b_lineup[6]);
             drawLineups();
@@ -134,6 +136,16 @@ function getModule() {
             drawScore();
             if(libero)
                 drawLiberoTriangles();
+
+            if(a_points >= scoreCap)
+                onSetFinished('a');
+            if(b_points >= scoreCap)
+                onSetFinished('b');
+
+            if(a_points >= playTo && a_points - b_points >= 2)
+                onSetFinished('a');
+            if(b_points >= playTo && b_points - a_points >= 2)
+                onSetFinished('b');
         };
 
 function drawScore()
@@ -216,7 +228,7 @@ Draw a point on the A marker position.
 
 /*
 Draw a point on the B marker position.
-text: text being drawn.
+libero: is libero served checked.
 */
     function drawBPoint(libero)
     {
@@ -478,7 +490,6 @@ draws lineups including previous substitutions.
 
 function drawLiberoTriangles()
 {
-drawText(.05,.05, a_liberoServeRotation + "" + b_liberoServeRotation);
     if(a_liberoServeRotation > 0)
         triangleText(.01, .08 + (a_liberoServeRotation * .125), "   ");
     if(b_liberoServeRotation > 0)
@@ -507,11 +518,12 @@ team: a or b depending on which timeout button was pressed.
                 {
                     drawText(.455, .90 + (.064 * a_timeouts), a_points + " - " + b_points);
                     a_timeouts++;
+                
+                    if(aServe)
+                        drawAText("T ");
+                    else
+                        drawBText("Tx");
                 }
-                if(aServe)
-                    drawAText("T ");
-                else
-                    drawBText("Tx");
             }
             else if(team == 'b')
             {
@@ -519,11 +531,12 @@ team: a or b depending on which timeout button was pressed.
                 {
                     drawText(.505, .90 + (.064 * b_timeouts), b_points + " - " + a_points);
                     b_timeouts++;
+                
+                    if(!aServe)
+                        drawBText("T ");
+                    else
+                        drawAText("Tx");
                 }
-                if(!aServe)
-                    drawBText("T ");
-                else
-                    drawAText("Tx");
             }
         };
 
@@ -556,13 +569,44 @@ award: true if a point is awarded, false if not
             }
         };
 
+    var onUndo = function ()
+        {
+            clearRect(0,0,1,1);
+            setLock(true);
+            reset();
+
+            initIterator();
+            var cur = nextInput();
+            while(cur != null)
+            {
+                var d = cur.data.split('\n');
+                switch(d[0]) {
+                    case 'p':
+                      onPoint(d[1], d[2] === 'true');
+                      break;
+                    case 't':
+                      onTimeout(d[1]);
+                      break;
+                    case 's':
+                      sub(d[1], d[3], parseInt(d[2]));
+                      break;
+                    case 'e':
+                      onPenalty(d[1], d[3], d[2] === 'true');
+                      break;
+                    default:
+                } 
+                cur = nextInput();
+            }
+            setLock(false);
+        };
+
 /*
 Called when the set is finished.  Package any game data and send to device.
 */
-    var onSetFinished = function ()
+    var onSetFinished = function (team)
         {
             
         };
 
-    return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished};
+    return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished, onUndo};
 }
