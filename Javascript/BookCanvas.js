@@ -38,8 +38,8 @@ function init()
     openMenu();
         }, false);
 
-    var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false, "module":"Javascript/modules/CIF_module.js"}';
-    setStartingData(test);
+    //var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false, "module":"Javascript/modules/CIF_module.js"}';
+    //setStartingData(test);
 }
 
 /*
