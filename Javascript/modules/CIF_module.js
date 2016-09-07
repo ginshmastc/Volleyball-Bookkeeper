@@ -67,9 +67,6 @@ function getModule() {
             a_subList = [[1, a_lineup[0]], [2, a_lineup[1]], [3, a_lineup[2]], [4, a_lineup[3]], [5, a_lineup[4]], [6, a_lineup[5]]];
             b_subList = [[1, b_lineup[0]], [2, b_lineup[1]], [3, b_lineup[2]], [4, b_lineup[3]], [5, b_lineup[4]], [6, b_lineup[5]]];
 
-            a_scoreMarks = new Array(MARK_CAP);
-            b_scoreMarks = new Array(MARK_CAP);
-
             timeoutCap = CIF_TIMEOUTS;
             subCap = CIF_SUBCAP;
             aServe = startingData.aServe;
@@ -113,6 +110,7 @@ function getModule() {
                     drawBR(libero);
                     aServe = true;
                     rotateA();
+                    setFontColor(col);
                     drawAText(a_points);
                 }
 
@@ -129,6 +127,7 @@ function getModule() {
                     drawAR(libero);
                     aServe = false;
                     rotateB();
+                    setFontColor(col);
                     drawBText(b_points);
                 }
 
@@ -163,6 +162,8 @@ libero: true if libero served.
 */
     function drawAR(libero)
     {
+        setFontSize(18);
+        setFontColor(col);
         var textLen = (measureText("R_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
@@ -178,6 +179,12 @@ libero: true if libero served.
         }
 
         a_markers[a_rotationPosition - 1] += textLen;
+
+        setFontColor("black");
+        if(b_points <= MARK_CAP / 2)
+            drawText(.51, .1623 + (b_points * .0317), "\\");
+        else if(b_points <= MARK_CAP)
+            drawText(.537, .1623 + ((b_points - (MARK_CAP / 2)) * .032), "\\");
     }
 
 /*
@@ -185,6 +192,8 @@ Draw an "R" on the b marker position.
 */
     function drawBR(libero)
     {
+        setFontSize(18);
+        setFontColor(col);
         var textLen = (measureText("R_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
@@ -200,6 +209,12 @@ Draw an "R" on the b marker position.
         }
 
         b_markers[b_rotationPosition - 1] += textLen;
+
+        setFontColor("black");
+        if(a_points <= MARK_CAP / 2)
+            drawText(.46, .1623 + (a_points * .0317), "\\");
+        else if(a_points <= MARK_CAP)
+            drawText(.487, .1623 + ((a_points - (MARK_CAP / 2)) * .032), "\\");
     }
 
 /*
@@ -208,6 +223,7 @@ Draw a point on the A marker position.
     function drawAPoint(libero)
     {
         setFontSize(18);
+        setFontColor(col);
         var textLen = (measureText(a_points+"_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
@@ -224,6 +240,19 @@ Draw a point on the A marker position.
         }
 
         a_markers[a_rotationPosition - 1] += textLen;
+        setFontSize(9);
+        setFontColor("black");
+
+        if(!libero)
+            if(a_points <= MARK_CAP / 2)
+                circleText(.458, .1533 + (a_points * .0317), "   ");
+            else if(a_points <= MARK_CAP)
+                circleText(.485, .1533 + ((a_points - (MARK_CAP / 2)) * .0317), "   ");
+        if(libero)
+            if(a_points <= MARK_CAP / 2)
+                triangleText(.458, .1533 + (a_points * .0317), "   ");
+            else if(a_points <= MARK_CAP)
+                triangleText(.485, .1533 + ((a_points - (MARK_CAP / 2)) * .0317), "   ");
     }
 
 /*
@@ -233,6 +262,7 @@ libero: is libero served checked.
     function drawBPoint(libero)
     {
         setFontSize(18);
+        setFontColor(col);
         var textLen = (measureText(b_points+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
@@ -250,6 +280,20 @@ libero: is libero served checked.
         }
 
         b_markers[b_rotationPosition - 1] += textLen;
+
+        setFontSize(9);
+        setFontColor("black");
+
+        if(!libero)
+            if(b_points <= MARK_CAP / 2)
+                circleText(.508, .1533 + (b_points * .0317), "   ");
+            else if(b_points <= MARK_CAP)
+                circleText(.535, .1533 + ((b_points - (MARK_CAP / 2)) * .0317), "   ");
+        if(libero)
+            if(b_points <= MARK_CAP / 2)
+                triangleText(.458, .1533 + (b_points * .0317), "   ");
+            else if(b_points <= MARK_CAP)
+                triangleText(.485, .1533 + ((b_points - (MARK_CAP / 2)) * .0317), "   ");
     }
 
 /*
@@ -267,7 +311,6 @@ Draw a point on the A text.
         drawText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), text);
         a_markers[a_rotationPosition - 1] += textLen;
     }
-
 
 /*
 Draw a point on the B marker position.
@@ -497,13 +540,6 @@ function drawLiberoTriangles()
 
 }
 
-/*
-Slash through point numbers.
-*/
-    function slashPoints()
-    {
-        
-    }
 
 /*
 Called when one of the timeout buttons is pressed.
