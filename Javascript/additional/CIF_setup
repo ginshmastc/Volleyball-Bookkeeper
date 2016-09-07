@@ -1,0 +1,11 @@
+/*
+This file gives functions to the CIF setup page.
+*/
+
+var lineupForm = "";
+
+function lineups()
+{
+    Android.loadNextForm(lineupForm);
+}
+
