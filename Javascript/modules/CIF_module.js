@@ -37,7 +37,7 @@ function getModule() {
     var onStart = function ()
         {
 
-            var bgimage = "url('Images/CIF_image.png')";
+            var bgimage = "url('../Images/CIF_image.png')";
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
             a_points = 0;
