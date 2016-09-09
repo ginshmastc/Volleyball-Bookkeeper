@@ -6,9 +6,35 @@
 
 .right {
   float: right;
+  text-align:right;
 }
 
 .lineup {
   font-size: 12px;
   width: 50px;
+}
+
+.numeral {
+  display: inline-block;
+  width: 25px;
+  text-align: left;
+}
+
+.rotate {
+  background-image: url('../Images/rotate.png');
+  background-size: 20px auto;
+  width: 25px;
+  height: 25px;
+}
+
+.brotate {
+  background-image: url('../Images/backrotate.png');
+  background-size: 20px auto;
+  width: 25px;
+  height: 25px;
+}
+
+.servelabel {
+  display: inline-block;
+  width: 65px;
 }
