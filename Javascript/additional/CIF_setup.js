@@ -9,7 +9,14 @@ function lineups()
 {
 
     if(Android != null)
+    {
+        alert("Android found.");
         Android.loadNextForm(lineupForm);
+    }
+    else
+    {
+        alert("Android NOT found.");
+    }
 
 }
 
