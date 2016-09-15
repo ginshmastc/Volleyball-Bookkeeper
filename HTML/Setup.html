@@ -1,8 +1,8 @@
  <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../CSS/SETup.css">
-<script src="../Javascript/additional/CIF_SETup.js"></script>
+<link rel="stylesheet" type="text/css" href="../CSS/Setup.css">
+<script src="../Javascript/additional/CIF_setup.js"></script>
 
 <title>Volleyball Bookkeeper</title>
 </head>
@@ -10,7 +10,7 @@
 <body>
 <form name = 'setup' id = 'setup'>
 <div class = 'left'>
-<label>Team A: <input type = 'text' name = 'teamA' required></label>
+<label>Team A: <input type = 'text' class = 'team' name = 'teamA' required></label>
 
   <div>
     <label><input type = 'radio' name = 'sets' value = '2' checked> 2 out of 3</label><br>
@@ -21,7 +21,7 @@
 
 <div class = 'right'>
   <div>
-    </label><label>Team B: <input type = 'text' name = 'teamB' required></label><br>
+    </label><label>Team B: <input type = 'text' class = 'team' name = 'teamB' required></label><br>
     </label><label>Play to: &nbsp; &nbsp; <input class = 'num' type = 'number' name = 'playTo' min = '1' value = '25'></label><br>
     </label><label>Point cap: <input class = 'num' type = 'number' name = 'cap' ></label><br>
     <input type = 'button' name = 'start' value = 'Start' onClick = 'lineups()'>
