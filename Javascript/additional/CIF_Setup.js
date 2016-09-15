@@ -7,16 +7,9 @@ var lineupForm = "https://cdn.rawgit.com/ginshmastc/Volleyball-Bookkeeper/master
 
 function lineups()
 {
-alert("test.");
-Android.showToast("Android test");
     if(Android != null)
     {
-        alert("Android found.");
         Android.loadNextForm(lineupForm);
-    }
-    else
-    {
-        alert("Android NOT found.");
     }
 
 }
