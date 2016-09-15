@@ -8,6 +8,10 @@
   float: right;
 }
 
+.sets {
+  margin-right: 0px;
+}
+
 .num {
   font-size: 12px;
   width: 50px;
@@ -16,4 +20,5 @@
 
 .team {
   width: 132px;
+  margin-right: 0px;
 }
