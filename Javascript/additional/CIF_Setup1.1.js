@@ -15,7 +15,7 @@ function lineups()
     saved[3] = document.getElementById('playTo').value + "";
     saved[4] = document.getElementById('cap').value + "";
 */
-saved[0] = "a;
+saved[0] = "a";
     saved[1] = "b";
     saved[2] = "c";
     saved[3] = "d";
