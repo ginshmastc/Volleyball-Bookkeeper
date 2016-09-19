@@ -22,6 +22,8 @@ saved[0] = "a";
     saved[4] = "e";
     if(Android != null)
     {
+        Android.test("test message");
+        Android.test(saved[0]);
         Android.addData(saved);
         Android.loadNextForm(lineupForm);
     }
