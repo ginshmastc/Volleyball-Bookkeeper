@@ -17,6 +17,13 @@ function lineups()
     saved[2] = document.getElementById('sets').value + "";
     saved[3] = document.getElementById('playTo').value + "";
     saved[4] = document.getElementById('cap').value + "";
+    
+    if(saved[0] == '')
+        saved[0] = 'Team A';
+    if(saved[1] == '')
+        saved[1] = 'Team B';
+    if(saved[4] == '')
+        saved[4] = '-1';
 
     if(Android != null)
     {
