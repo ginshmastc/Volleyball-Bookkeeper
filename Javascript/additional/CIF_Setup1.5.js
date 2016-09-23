@@ -16,7 +16,8 @@ function lineups()
 
     if(Android != null)
     {
-        Android.loadNextForm(saved, lineupForm);
+        Android.addData(saved);
+        loadURL(lineupForm);
     }
 }
 
