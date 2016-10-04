@@ -28,6 +28,7 @@ function lineups()
     if(Android != null)
     {
         Android.finishForm(saved, lineupForm);
+        window.location.href = lineupForm;
     }
 }
 
