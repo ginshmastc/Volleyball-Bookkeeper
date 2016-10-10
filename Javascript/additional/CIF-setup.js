@@ -119,8 +119,16 @@ function backRotate(team)
 
 function start()
 {
-    var saved = '"aLineup":[';
-
+    var saved = '{';
+    
+    saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
+    saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
+    saved += '"sets":' + document.getElementById('sets').value + ', ';
+    saved += '"playTo":' + document.getElementById('playTo') + ', ';
+    saved += '"cap":' + document.getElementById('cap') + ', ';
+    saved += '"timeoutCap":2, ';
+    saved += 
+    
     saved += document.getElementById('alineup1').value + ", ";
     saved += document.getElementById('alineup2').value + ", ";
     saved += document.getElementById('alineup3').value + ", ";
