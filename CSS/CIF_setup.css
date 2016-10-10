@@ -1,0 +1,120 @@
+.overlay1 {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.content1 {
+    position: relative;
+    margin-top: 25px;
+    top: 100%;
+}
+
+.overlay2 {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.content2 {
+    position: relative;
+    top: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+a {
+    float: right;
+}
+
+label {
+    color: white;
+}
+
+input {
+    margin: 8px;
+}
+
+.next {
+    font-size: 36px;
+    text-decoration: none;
+    color: yellow;
+}
+
+
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.lineup {
+    width: 30px;
+    -moz-appearance:textfield;
+    text-align: center;
+}
+
+.lineup::-webkit-outer-spin-button,
+.lineup::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.sets {
+  margin-right: 0px;
+}
+
+.num {
+  font-size: 12px;
+  width: 50px;
+  margin-left: 6em;
+}
+
+.team {
+  width: 132px;
+  margin-right: 0px;
+}
+
+.numeral {
+  display: inline-block;
+  width: 25px;
+  text-align: left;
+}
+
+.rotate {
+  background-image: url('../Images/rotate.png');
+  background-size: 20px auto;
+  width: 25px;
+  height: 25px;
+}
+
+.brotate {
+  background-image: url('../Images/backrotate.png');
+  background-size: 20px auto;
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+}
+
+.servelabel {
+  display: inline-block;
+  width: 65px;
+}
