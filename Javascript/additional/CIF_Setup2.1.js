@@ -12,15 +12,15 @@ function onStart()
 function lineups()
 {
     var saved = '{';
-    saved += '"teamA":' + document.getElementById('teamA').value;
-    saved += ', "teamB":' + document.getElementById('teamB').value;
+    saved += '"teamA":"' + document.getElementById('teamA').value + '"';
+    saved += ', "teamB":"' + document.getElementById('teamB').value + '"';
     saved += ', "sets":' + document.getElementById('sets').value;
     saved += ', "playTo":' + document.getElementById('playTo').value;
     
     if(document.getElementById('cap') == '')
-        saved += ', "pointCap":-1';
+        saved += ', "pointCap":-1, ';
     else
-        saved += ', "pointCap":' + document.getElementById('cap').value;
+        saved += ', "pointCap":' + document.getElementById('cap').value + ', ';
 
     if(Android != null)
     {
