@@ -29,17 +29,6 @@ function openOverlay2()
     document.getElementById('bteamlabel').innerHTML = document.getElementById('teamB').value;
 }
 
-function lineups()
-{
-    if(Android != null)
-    {
-        Android.loadNextForm(lineupForm);
-    }
-
-}
-
-
-
 function rotate(team)
 {
     if(team == 'a')
@@ -127,8 +116,13 @@ function start()
     saved += '"playTo":' + document.getElementById('playTo') + ', ';
     saved += '"cap":' + document.getElementById('cap') + ', ';
     saved += '"timeoutCap":2, ';
-    saved += 
     
+    if(document.getElementById("serve") == 'a')
+        saved += 'aServe:true, ';
+    else
+        saved += 'aServe:false, ';
+    
+    saved += '"aLineup:[';
     saved += document.getElementById('alineup1').value + ", ";
     saved += document.getElementById('alineup2').value + ", ";
     saved += document.getElementById('alineup3').value + ", ";
@@ -144,14 +138,11 @@ function start()
     saved += document.getElementById('blineup5').value + ", ";
     saved += document.getElementById('blineup6').value + ", ";
     saved += document.getElementById('blineupL').value + '], ';
-
-    saved += '"aServe": ' + document.getElementByName('serve').value;
     saved += '}';
     
     if(Android != null)
     {
         Android.finishForm(saved);
-
     }
 }
 
