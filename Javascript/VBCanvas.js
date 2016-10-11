@@ -45,7 +45,7 @@ function init()
 /*
 Inputs the starting match data.
 */
-function setStartingData(data)
+function setStartingData(data, url)
 {
     startingData = JSON.parse(data);
 
@@ -53,7 +53,7 @@ function setStartingData(data)
     script.onload = function() {
       onStart();
     };
-    script.src = startingData.module;
+    script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
