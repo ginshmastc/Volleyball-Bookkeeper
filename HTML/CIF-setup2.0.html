@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../CSS/CIF-setup.css">
-<script src="../Javascript/additional/CIF-setup1.9.js"></script>
+<script src="../Javascript/additional/CIF-setup2.0.js"></script>
 
 <title>Volleyball Bookkeeper</title>
 </head>
@@ -51,7 +51,7 @@
     
     <label class = 'numeral'>L:</label><input class = 'lineup' type = 'number' id = 'alineupL'><br>
 
-    <label class = 'servelabel'>1st Serve</label><input type = 'radio' name = 'serve' value = 'a' checked>
+    <label class = 'servelabel'>1st Serve</label><input type = 'radio' id = 'serve' name = 'serve' value = 'a' checked>
     <button class = 'brotate' onClick = 'backRotate("a")'></button>
     <button class = 'rotate' onClick = 'rotate("a")'></button><br>
 
@@ -71,7 +71,7 @@
 
     <label class = 'numeral'>L:</label><input class = 'lineup' type = 'number' id = 'blineupL'><br>
 
-    <label class = 'servelabel'>1st Serve</label><input type = 'radio' name = 'serve' value = 'b'>
+    <label class = 'servelabel'>1st Serve</label><input type = 'radio' id = 'serve' name = 'serve' value = 'b'>
     <button class = 'brotate' onClick = 'backRotate("b")'></button>
     <button class = 'rotate' onClick = 'rotate("b")'></button><br>
     <a href="javascript:void(0)" class="next" onclick="start()">Continue</a>
