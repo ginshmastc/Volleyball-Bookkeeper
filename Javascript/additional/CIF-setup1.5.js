@@ -23,7 +23,7 @@ function openOverlay1()
 
 function openOverlay2()
 {   
-    id(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
+    if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
         Android.toast('Team name is missing!');
         return;
