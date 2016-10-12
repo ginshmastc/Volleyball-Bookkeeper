@@ -196,6 +196,7 @@ function start()
     
     saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
     saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
+    saved += '"aWins":0, "bWins":0, ';
     saved += '"sets":' + document.getElementById('sets').value + ', ';
     saved += '"playTo":' + document.getElementById('playTo').value + ', ';
     saved += '"cap":' + tCap + ', ';
