@@ -170,13 +170,16 @@ function start()
             }
         }
     Android.toast("0");
-    var tCap, tAL, tBL, tServe;
+    var tCap;
+    var tAL;
+    var tBL;
+    var tServe;
     
     if(aLineup[6] == '')
         tAL = '-1';
     else
         tAL = aLineup[6];
-    
+    Android.toast("2");
     if(bLineup[6] == '')
         tBL = '-1';
     else
