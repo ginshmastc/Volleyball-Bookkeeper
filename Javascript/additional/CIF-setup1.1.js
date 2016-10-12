@@ -23,6 +23,18 @@ function openOverlay1()
 
 function openOverlay2()
 {   
+    id(document.getElementById('teamA').value == '' || document.getElementById('teamB') == '')
+    {
+        alert('Team name is missing!');
+        return;
+    }
+    
+    if(document.getElementById('playTo').value == '')
+    {
+        alert('Need to input a score to play to!');
+        return;
+    }
+    
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
     document.getElementById('ateamlabel').innerHTML = document.getElementById('teamA').value;
@@ -110,17 +122,65 @@ function start()
 {
     var saved = '{';
     
+    var aLineup = [];
+    var bLineup = [];
+    
+    aLineup[0] = document.getElementById('alineup1').value;
+    aLineup[1] = document.getElementById('alineup2').value;
+    aLineup[2] = document.getElementById('alineup3').value;
+    aLineup[3] = document.getElementById('alineup4').value;
+    aLineup[4] = document.getElementById('alineup5').value;
+    aLineup[5] = document.getElementById('alineup6').value;
+    aLineup[6] = document.getElementById('alineupL').value;
+    
+    bLineup[0] = document.getElementById('blineup1').value;
+    bLineup[1] = document.getElementById('blineup2').value;
+    bLineup[2] = document.getElementById('blineup3').value;
+    bLineup[3] = document.getElementById('blineup4').value;
+    bLineup[4] = document.getElementById('blineup5').value;
+    bLineup[5] = document.getElementById('blineup6').value;
+    bLineup[6] = document.getElementById('blineupL').value;
+    
+    for(i = 0; i < 6; i++)
+    {
+        if(aLineup[i] == '')
+        {
+            alert('Need to fill in lineup at position: ' + (i + 1));
+            return;
+        }
+        if(bLineup[i] == '')
+        {
+            alert('Need to fill in lineup at position: ' + (i + 1));
+            return;
+        }
+    }
+    
+    for(i = 0; i < 6; i++)
+        for(j = i + 1; j < 7; j++)
+        {
+            if(aLineup[i] == aLineup[j])
+            {
+                alert('Cannot have repeating number: ' + aLineup[i]);
+                return;
+            }
+            if(bLineup[i] == bLineup[j])
+            {
+                alert('Cannot have repeating number: ' + bLineup[i]);
+                return;
+            }
+        }
+    
     var tCap, tAL, tBL, tServe;
     
-    if(document.getElementById('alineupL').value == '')
+    if(aLineup[6] == '')
         tAL = '-1';
     else
-        tAL = document.getElementById('alineupL').value;
+        tAL = aLineup[6];
     
-    if(document.getElementById('blineupL').value == '')
+    if(bLineup[6] == '')
         tBL = '-1';
     else
-        tBL = document.getElementById('blineupL').value;
+        tBL = bLineup[6];
     
      if(document.getElementById('cap').value == '')
         tCap = '-1';
@@ -141,20 +201,20 @@ function start()
     saved += 'aServe:' + tServe + ', ';
     
     saved += '"aLineup:[';
-    saved += document.getElementById('alineup1').value + ", ";
-    saved += document.getElementById('alineup2').value + ", ";
-    saved += document.getElementById('alineup3').value + ", ";
-    saved += document.getElementById('alineup4').value + ", ";
-    saved += document.getElementById('alineup5').value + ", ";
-    saved += document.getElementById('alineup6').value + ", ";
+    saved += aLineup[0] + ", ";
+    saved += aLineup[1] + ", ";
+    saved += aLineup[2] + ", ";
+    saved += aLineup[3] + ", ";
+    saved += aLineup[4] + ", ";
+    saved += aLineup[5] + ", ";
     saved += tAL + '], "bLineup":[';
 
-    saved += document.getElementById('blineup1').value + ", ";
-    saved += document.getElementById('blineup2').value + ", ";
-    saved += document.getElementById('blineup3').value + ", ";
-    saved += document.getElementById('blineup4').value + ", ";
-    saved += document.getElementById('blineup5').value + ", ";
-    saved += document.getElementById('blineup6').value + ", ";
+    saved += bLineup[0] + ", ";
+    saved += bLineup[1] + ", ";
+    saved += bLineup[2] + ", ";
+    saved += bLineup[3] + ", ";
+    saved += bLineup[4] + ", ";
+    saved += bLineup[5] + ", ";
     saved += tBL + ']';
     saved += '}';
     
