@@ -200,7 +200,7 @@ function start()
     saved += '"playTo":' + document.getElementById('playTo').value + ', ';
     saved += '"cap":' + tCap + ', ';
     saved += '"timeoutCap":2, ';
-    saved += 'aServe:' + tServe + ', ';
+    saved += '"aServe":' + tServe + ', ';
     
     saved += '"aLineup":[';
     saved += aLineup[0] + ", ";
