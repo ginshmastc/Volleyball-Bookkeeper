@@ -110,17 +110,35 @@ function start()
 {
     var saved = '{';
     
+    var tCap, tAL, tBL, tServe;
+    
+    if(document.getElementById('alineupL').value == '')
+        tAL = '-1';
+    else
+        tAL = document.getElementById('alineupL').value;
+    
+    if(document.getElementById('blineupL').value == '')
+        tBL = '-1';
+    else
+        tBL = document.getElementById('blineupL').value;
+    
+     if(document.getElementById('cap').value == '')
+        tCap = '-1';
+    else
+        tCap = document.getElementById('cap').value;
+    
+    if(document.getElementById('serve').value == 'a')
+        tServe = 'true';
+    else
+        tServe = 'false';
+    
     saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
     saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
     saved += '"sets":' + document.getElementById('sets').value + ', ';
-    saved += '"playTo":' + document.getElementById('playTo') + ', ';
-    saved += '"cap":' + document.getElementById('cap') + ', ';
+    saved += '"playTo":' + document.getElementById('playTo').value + ', ';
+    saved += '"cap":' + tCap + ', ';
     saved += '"timeoutCap":2, ';
-    
-    if(document.getElementById("serve") == 'a')
-        saved += 'aServe:true, ';
-    else
-        saved += 'aServe:false, ';
+    saved += 'aServe:' + tServe + ', ';
     
     saved += '"aLineup:[';
     saved += document.getElementById('alineup1').value + ", ";
@@ -129,7 +147,7 @@ function start()
     saved += document.getElementById('alineup4').value + ", ";
     saved += document.getElementById('alineup5').value + ", ";
     saved += document.getElementById('alineup6').value + ", ";
-    saved += document.getElementById('alineupL').value + '], "bLineup":[';
+    saved += tAL + '], "bLineup":[';
 
     saved += document.getElementById('blineup1').value + ", ";
     saved += document.getElementById('blineup2').value + ", ";
@@ -137,7 +155,7 @@ function start()
     saved += document.getElementById('blineup4').value + ", ";
     saved += document.getElementById('blineup5').value + ", ";
     saved += document.getElementById('blineup6').value + ", ";
-    saved += document.getElementById('blineupL').value + '], ';
+    saved += tBL + ']';
     saved += '}';
     
     if(Android != null)
