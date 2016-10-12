@@ -20,6 +20,7 @@ function getModule() {
     var CIF_SUBCAP = 18;
     var CIF_TIMEOUTS = 2;
     var LINEUP_LEN = 6;
+    var pointCap;
     var col;
 
     var a_scoreMarks;
@@ -44,7 +45,7 @@ function getModule() {
             a_lineup = startingData.aLineup.slice(0);
             a_teamName = startingData.teamA;
             a_liberoServeRotation = -1;//libero has not served yet
-            a_setsWon = 0;
+            a_setsWon = startingData.aWins;
             a_rotationPosition = 1;
             a_subs = 0;
             a_timeouts = 0;
@@ -59,7 +60,7 @@ function getModule() {
             b_lineup = startingData.bLineup.slice(0);
             b_teamName = startingData.teamB;
             b_liberoServeRotation = -1;//libero has not served yet
-            b_setsWon = 0;
+            b_setsWon = startingData.bWins;
             b_rotationPosition = 1;
             b_subs = 0;
             b_timeouts = 0;
@@ -70,6 +71,7 @@ function getModule() {
             timeoutCap = CIF_TIMEOUTS;
             subCap = CIF_SUBCAP;
             aServe = startingData.aServe;
+	    pointCap = startingData.cap;
             comments = "";
             if(aServe)
                 b_rotationPosition--;
