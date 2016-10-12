@@ -23,7 +23,7 @@ function openOverlay1()
 
 function openOverlay2()
 {   
-    id(document.getElementById('teamA').value == '' || document.getElementById('teamB') == '')
+    id(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
         alert('Team name is missing!');
         return;
