@@ -169,7 +169,7 @@ function start()
                 return;
             }
         }
-    
+    Android.toast("0");
     var tCap, tAL, tBL, tServe;
     
     if(aLineup[6] == '')
@@ -191,7 +191,7 @@ function start()
         tServe = 'true';
     else
         tServe = 'false';
-    Android.test("1");
+    Android.toast("1");
     saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
     saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
     saved += '"sets":' + document.getElementById('sets').value + ', ';
@@ -199,7 +199,7 @@ function start()
     saved += '"cap":' + tCap + ', ';
     saved += '"timeoutCap":2, ';
     saved += 'aServe:' + tServe + ', ';
-    Android.test("2");
+    Android.toast("2");
     saved += '"aLineup":[';
     saved += aLineup[0] + ", ";
     saved += aLineup[1] + ", ";
@@ -208,7 +208,7 @@ function start()
     saved += aLineup[4] + ", ";
     saved += aLineup[5] + ", ";
     saved += tAL + '], "bLineup":[';
-Android.test("3");
+Android.toast("3");
     saved += bLineup[0] + ", ";
     saved += bLineup[1] + ", ";
     saved += bLineup[2] + ", ";
@@ -219,7 +219,7 @@ Android.test("3");
     saved += '}';
     
     if(Android != null)
-    {Android.test("4");
+    {Android.toast("4");
         Android.finishForm(saved);
     }
 }
