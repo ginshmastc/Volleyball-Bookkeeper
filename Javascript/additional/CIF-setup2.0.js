@@ -183,17 +183,17 @@ function start()
         tBL = '-1';
     else
         tBL = bLineup[6];
-    Android.toast("0");
+    
     if(document.getElementById('cap').value == '')
         tCap = '-1';
     else
         tCap = document.getElementById('cap').value;
-    Android.toast("1");
+    
     if(document.getElementById('serve').value == 'a')
         tServe = 'true';
     else
         tServe = 'false';
-    Android.toast("2");
+    
     saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
     saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
     saved += '"sets":' + document.getElementById('sets').value + ', ';
@@ -201,7 +201,7 @@ function start()
     saved += '"cap":' + tCap + ', ';
     saved += '"timeoutCap":2, ';
     saved += 'aServe:' + tServe + ', ';
-    Android.toast("3");
+    
     saved += '"aLineup":[';
     saved += aLineup[0] + ", ";
     saved += aLineup[1] + ", ";
