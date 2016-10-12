@@ -182,7 +182,7 @@ function start()
     else
         tBL = bLineup[6];
     
-     if(document.getElementById('cap').value == '')
+    if(document.getElementById('cap').value == '')
         tCap = '-1';
     else
         tCap = document.getElementById('cap').value;
@@ -191,7 +191,7 @@ function start()
         tServe = 'true';
     else
         tServe = 'false';
-    
+    Android.test("1");
     saved += '"teamA":"' + document.getElementById('teamA').value + '", ';
     saved += '"teamB":"' + document.getElementById('teamB').value + '", ';
     saved += '"sets":' + document.getElementById('sets').value + ', ';
@@ -199,8 +199,8 @@ function start()
     saved += '"cap":' + tCap + ', ';
     saved += '"timeoutCap":2, ';
     saved += 'aServe:' + tServe + ', ';
-    
-    saved += '"aLineup:[';
+    Android.test("2");
+    saved += '"aLineup":[';
     saved += aLineup[0] + ", ";
     saved += aLineup[1] + ", ";
     saved += aLineup[2] + ", ";
@@ -208,7 +208,7 @@ function start()
     saved += aLineup[4] + ", ";
     saved += aLineup[5] + ", ";
     saved += tAL + '], "bLineup":[';
-
+Android.test("3");
     saved += bLineup[0] + ", ";
     saved += bLineup[1] + ", ";
     saved += bLineup[2] + ", ";
@@ -219,7 +219,7 @@ function start()
     saved += '}';
     
     if(Android != null)
-    {
+    {Android.test("4");
         Android.finishForm(saved);
     }
 }
