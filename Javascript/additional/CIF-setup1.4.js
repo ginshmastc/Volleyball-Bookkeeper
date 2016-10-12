@@ -25,13 +25,13 @@ function openOverlay2()
 {   
     id(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
-        alert('Team name is missing!');
+        Android.toast('Team name is missing!');
         return;
     }
     
     if(document.getElementById('playTo').value == '')
     {
-        alert('Need to input a score to play to!');
+        Android.toast('Need to input a score to play to!');
         return;
     }
     
@@ -145,12 +145,12 @@ function start()
     {
         if(aLineup[i] == '')
         {
-            alert('Need to fill in lineup at position: ' + (i + 1));
+            Android.toast('Need to fill in lineup at position: ' + (i + 1));
             return;
         }
         if(bLineup[i] == '')
         {
-            alert('Need to fill in lineup at position: ' + (i + 1));
+            Android.toast('Need to fill in lineup at position: ' + (i + 1));
             return;
         }
     }
@@ -160,12 +160,12 @@ function start()
         {
             if(aLineup[i] == aLineup[j])
             {
-                alert('Cannot have repeating number: ' + aLineup[i]);
+                Android.toast('Cannot have repeating number: ' + aLineup[i]);
                 return;
             }
             if(bLineup[i] == bLineup[j])
             {
-                alert('Cannot have repeating number: ' + bLineup[i]);
+                Android.toast('Cannot have repeating number: ' + bLineup[i]);
                 return;
             }
         }
