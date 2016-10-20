@@ -138,9 +138,9 @@ function getModule() {
             if(libero)
                 drawLiberoTriangles();
 
-            if(a_points >= scoreCap)
+            if(pointCap > 0 && a_points >= pointCap)
                 onSetFinished('a');
-            if(b_points >= scoreCap)
+            if(pointCap > 0 && b_points >= pointCap)
                 onSetFinished('b');
 
             if(a_points >= playTo && a_points - b_points >= 2)
