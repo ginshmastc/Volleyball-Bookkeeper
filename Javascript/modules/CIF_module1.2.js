@@ -64,6 +64,11 @@ function getModule() {
             b_rotationPosition = 1;
             b_subs = 0;
             b_timeouts = 0;
+		
+		if(a_lineup[6] < 0)
+			a_lineup[6] = '-';
+		if(b_lineup[6] < 0)
+			b_lineup[6] = '-';
 
             a_subList = [[1, a_lineup[0]], [2, a_lineup[1]], [3, a_lineup[2]], [4, a_lineup[3]], [5, a_lineup[4]], [6, a_lineup[5]]];
             b_subList = [[1, b_lineup[0]], [2, b_lineup[1]], [3, b_lineup[2]], [4, b_lineup[3]], [5, b_lineup[4]], [6, b_lineup[5]]];
