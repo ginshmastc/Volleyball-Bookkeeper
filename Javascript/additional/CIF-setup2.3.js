@@ -175,12 +175,12 @@ function start()
     var tServe;
     
     if(aLineup[6] == '')
-        tAL = '-';
+        tAL = '-1';
     else
         tAL = aLineup[6];
     
     if(bLineup[6] == '')
-        tBL = '-';
+        tBL = '-1';
     else
         tBL = bLineup[6];
     
