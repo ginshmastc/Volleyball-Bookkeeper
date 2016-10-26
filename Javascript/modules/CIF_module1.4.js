@@ -156,16 +156,16 @@ function getModule() {
 	    if(aServe)//Hide libero served checkbox if libero cannot serve
 	    {
 		    if(a_liberoServeRotation != -1 && a_liberoServeRotation != a_rotationPosition)
-			    document.getElementById('libero').hidden = true;
+			    document.getElementById('libero').disabled = true;
 		    else
-			    document.getElementById('libero').hidden = false;
+			    document.getElementById('libero').disabled = false;
 	    }
 	    else
 	    {
 		    if(b_liberoServeRotation != -1 && b_liberoServeRotation != b_rotationPosition)
-			    document.getElementById('libero').hidden = true;
+			    document.getElementById('libero').disabled = true;
 		    else
-			    document.getElementById('libero').hidden = false;
+			    document.getElementById('libero').disabled = false;
 	    }
         };
 
