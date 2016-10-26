@@ -134,9 +134,6 @@ p {
 }
 
 @media screen and (max-height: 500px) {
-    label {
-        font-size: 12px;
-    }
     
     .overlay a, .subOverlay p {
     font-size: 20px;
@@ -154,9 +151,6 @@ p {
 }
 
 @media screen and (max-width: 600px) {
-    label {
-        font-size: 16px;
-    }
     
     .overlay a, .subOverlay p {
     font-size: 20px;
