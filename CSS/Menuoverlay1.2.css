@@ -98,6 +98,7 @@ input {
     font-size: 20px;
     color: black;
     display: block;
+    width: 50px;
 }
 
 p {
@@ -134,11 +135,6 @@ p {
 }
 
 @media screen and (max-height: 500px) {
-    
-    .overlay a, .subOverlay p {
-    font-size: 20px;
-    margin: 14px;
-    }
 
     input {
     margin: 14px;
@@ -151,11 +147,6 @@ p {
 }
 
 @media screen and (max-width: 600px) {
-    
-    .overlay a, .subOverlay p {
-    font-size: 20px;
-    margin: 16px;
-    }
 
     input {
     margin: 14px;
