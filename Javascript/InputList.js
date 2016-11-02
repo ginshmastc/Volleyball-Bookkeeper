@@ -104,8 +104,29 @@ function lengthInput()
 /*
 Deconstructs the linked list into its stored form.
 */
-function packageInput()
+function toString()
 {
+    initIterator();
+    var content = "";
+    var curElement = nextInput();
+    while(curElement != null)
+    {
+        content += '\\INPUT' + curElement.data;
+        curElement = nextInput();
+    }
+    
+    return content;
+}
+
+/*
+Appends a linked list of input from a string of game data.
+*/
+function loadGameData(String gamedata)
+{
+    var inputlist = gamedata.split('\\INPUT');
+    var len = inputlist.length;
+    for(i = 0; i < len; i++)
+        addInput(new Node(inputlist[i]));
     
 }
 
