@@ -130,3 +130,9 @@ function loadGameData(String gamedata)
     
 }
 
+function packageDataForAndroid()
+{
+    var pack = toString();
+    Android.getPackage(pack);
+}
+
