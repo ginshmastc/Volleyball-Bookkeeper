@@ -104,6 +104,7 @@ function lengthInput()
 /*
 Deconstructs the linked list into its stored form.
 */
+/*
 function toString()
 {
     initIterator();
@@ -117,10 +118,10 @@ function toString()
     
     return content;
 }
-
+*/
 /*
 Appends a linked list of input from a string of game data.
-*/
+*//*
 function loadGameData(String gamedata)
 {
     var inputlist = gamedata.split('\\INPUT');
@@ -135,4 +136,4 @@ function packageDataForAndroid()
     var pack = toString();
     Android.getPackage(pack);
 }
-
+*/
