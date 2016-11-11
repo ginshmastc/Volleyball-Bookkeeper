@@ -91,6 +91,12 @@ function getModule() {
 
             //fill in liberos
             setFontSize(18);
+		
+            //fill in first serve
+            if(aServe)
+                drawText(.425, .037, "X");
+            else
+                drawText(.562, .037, "X");
             
             drawText(.08, .11, a_lineup[6]);
             drawText(.63, .11, b_lineup[6]);
