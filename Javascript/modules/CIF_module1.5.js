@@ -37,7 +37,6 @@ function getModule() {
 
     var onStart = function ()
         {
-
             var bgimage = "url('../Images/CIF_image.png')";
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
@@ -91,7 +90,7 @@ function getModule() {
 
             //fill in liberos
             setFontSize(18);
-		
+
             //fill in first serve
             if(aServe)
                 drawText(.425, .037, "X");
@@ -106,6 +105,7 @@ function getModule() {
             setFontColor(col);
             
             drawScore();
+
         };
 
     var onPoint = function (team, libero)
@@ -190,6 +190,8 @@ libero: true if libero served.
 */
     function drawAR(libero)
     {
+        if(a_columns[a_rotationPosition - 1] >= 2)
+             return;
         setFontSize(18);
         setFontColor(col);
         var textLen = (measureText("R_") / width) / scale;
@@ -197,6 +199,8 @@ libero: true if libero served.
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
+            if(a_columns[a_rotationPosition - 1] >= 2)
+                 return;
         }
         if(!libero)
             circleText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), "R");
@@ -220,6 +224,8 @@ Draw an "R" on the b marker position.
 */
     function drawBR(libero)
     {
+        if(b_columns[b_rotationPosition - 1] >= 2)
+             return;
         setFontSize(18);
         setFontColor(col);
         var textLen = (measureText("R_") / width) / scale;
@@ -227,6 +233,8 @@ Draw an "R" on the b marker position.
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
+            if(b_columns[b_rotationPosition - 1] >= 2)
+                return;
         }
         if(!libero)
             circleText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), "R");
@@ -250,6 +258,8 @@ Draw a point on the A marker position.
 */
     function drawAPoint(libero)
     {
+        if(a_columns[a_rotationPosition - 1] >= 2)
+             return;
         setFontSize(18);
         setFontColor(col);
         var textLen = (measureText(a_points+"_") / width) / scale;
@@ -257,6 +267,8 @@ Draw a point on the A marker position.
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
+            if(a_columns[a_rotationPosition - 1] >= 2)
+                return;
         }
 
         if(!libero)
@@ -289,6 +301,8 @@ libero: is libero served checked.
 */
     function drawBPoint(libero)
     {
+        if(b_columns[b_rotationPosition - 1] >= 2)
+            return;
         setFontSize(18);
         setFontColor(col);
         var textLen = (measureText(b_points+"_") / width) / scale;
@@ -296,6 +310,8 @@ libero: is libero served checked.
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
+            if(b_columns[b_rotationPosition - 1] >= 2)
+                return;
         }
         if(!libero)
         {
@@ -329,12 +345,16 @@ Draw a point on the A text.
 */
     function drawAText(text)
     {
+        if(a_columns[a_rotationPosition - 1] >= 2)
+             return;
         setFontSize(16);
         var textLen = (measureText(text+"_") / width) / scale;
         if((a_markers[a_rotationPosition - 1] + textLen) >= A_MARKER_END)
         {
             a_columns[a_rotationPosition - 1]++;
             a_markers[a_rotationPosition - 1] = A_MARKER_START;
+            if(a_columns[a_rotationPosition - 1] >= 2)
+                return;
         }
         drawText(a_markers[a_rotationPosition - 1], .18 + (.064 * (a_columns[a_rotationPosition - 1] + (a_rotationPosition - 1) * 2)), text);
         a_markers[a_rotationPosition - 1] += textLen;
@@ -346,12 +366,16 @@ text: text being drawn
 */
     function drawBText(text)
     {
+        if(b_columns[b_rotationPosition - 1] >= 2)
+             return;
         setFontSize(16);
         var textLen = (measureText(text+"_") / width) / scale;
         if((b_markers[b_rotationPosition - 1] + textLen) >= B_MARKER_END)
         {
             b_columns[b_rotationPosition - 1]++;
             b_markers[b_rotationPosition - 1] = B_MARKER_START;
+            if(b_columns[b_rotationPosition - 1] >= 2)
+                return;
         }
         drawText(b_markers[b_rotationPosition - 1], .18 + (.064 * (b_columns[b_rotationPosition - 1] + (b_rotationPosition - 1) * 2)), text);
         b_markers[b_rotationPosition - 1] += textLen;
