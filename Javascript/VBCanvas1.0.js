@@ -53,7 +53,10 @@ function setStartingData(data, url)
     script.onload = function() {
       onStart();
     };
-    script.src = url;
+    if(url === "nourl")
+        script.src = startingData.module;
+    else
+        script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
