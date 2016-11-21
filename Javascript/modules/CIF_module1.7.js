@@ -13,6 +13,10 @@ function getModule() {
     var a_column;
     var b_marker;
     var b_column;
+    var a_setsWon;
+    var b_setsWon;
+    var aServe;
+	
     var A_MARKER_START = .15;
     var A_MARKER_END = .47;
     var B_MARKER_START = .7;
