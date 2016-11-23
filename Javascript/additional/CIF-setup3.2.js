@@ -187,12 +187,12 @@ function start()
     
     for(i = 0; i < 6; i++)
     {
-        if(aLineup[i] == '')
+        if(lineupA[i] == '')
         {
             Android.toast('Need to fill in lineup at position: ' + (i + 1));
             return;
         }
-        if(bLineup[i] == '')
+        if(lineupB[i] == '')
         {
             Android.toast('Need to fill in lineup at position: ' + (i + 1));
             return;
