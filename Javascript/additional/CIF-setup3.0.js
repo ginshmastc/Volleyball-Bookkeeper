@@ -43,15 +43,16 @@ function openOverlay2()
         return;
     }
     
-    resetOverlays();
-    document.getElementById('overlay2').style.width = "100%";
     teamA = document.getElementById('teamA').value;
     teamB = document.getElementById('teamB').value;
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
+    
+    resetOverlays();
+    document.getElementById('overlay2').style.width = "100%";
 }
 
-function openOverlay2(a_team, b_team, a_lineup, b_lineup)
+function startWithOverlay2(a_team, b_team, a_lineup, b_lineup)
 {   
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
