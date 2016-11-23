@@ -5,6 +5,8 @@ This file gives functions to the CIF setup page.
 var saved;
 var teamA;
 var teamB;
+var aWins;
+var bWins;
 var lineupA;
 var lineupB;
 var sets;
@@ -16,6 +18,8 @@ function init()
     saved = "";
     teamA = "";
     teamB = "";
+    aWins = 0;
+    bWins = 0;
     sets = 0;
     playTo = 25;
     cap = "-1";
@@ -52,12 +56,14 @@ function openOverlay2()
     teamB = document.getElementById('teamB').value;
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
+    sets = document.getElementById('sets').value;
+    playTo = document.getElementById('playTo').value;
     
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
 }
 
-function startWithOverlay2(a_team, b_team, a_lineup, b_lineup, mSets, mPlayTo, mCap)
+function startWithOverlay2(a_team, b_team, a_lineup, b_lineup, mSets, mPlayTo, mCap, a_wins, b_wins)
 {   
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
@@ -70,6 +76,8 @@ function startWithOverlay2(a_team, b_team, a_lineup, b_lineup, mSets, mPlayTo, m
     sets = mSets;
     playTo = mPlayTo;
     cap = mCap;
+    aWins = a_wins;
+    bWins = b_wins;
     
     document.getElementById('alineup1').value = a_lineup[0];
     document.getElementById('alineup2').value = a_lineup[1];
@@ -175,7 +183,10 @@ function start()
     lineupA[3] = document.getElementById('alineup4').value;
     lineupA[4] = document.getElementById('alineup5').value;
     lineupA[5] = document.getElementById('alineup6').value;
-    lineupA[6] = document.getElementById('alineupL').value;
+    if(document.getElementById('alineupL').value == '')
+        lineupA[6] = '-1';
+    else
+        lineupA[6] = document.getElementById('alineupL').value;
     
     lineupB[0] = document.getElementById('blineup1').value;
     lineupB[1] = document.getElementById('blineup2').value;
@@ -183,8 +194,11 @@ function start()
     lineupB[3] = document.getElementById('blineup4').value;
     lineupB[4] = document.getElementById('blineup5').value;
     lineupB[5] = document.getElementById('blineup6').value;
-    lineupB[6] = document.getElementById('blineupL').value;
-    
+    if(document.getElementById('blineupL').value == '')
+        lineupB[6] = ' -1';
+    else
+        lineupB[6] = document.getElementById('blineupL').value;
+ 
     for(i = 0; i < 6; i++)
     {
         if(lineupA[i] == '')
@@ -213,25 +227,11 @@ function start()
                 return;
             }
         }
-    var tCap;
-    var tAL;
-    var tBL;
+    
     var tServe;
     
-    if(lineupA[6] == '')
-        tAL = '-1';
-    else
-        tAL = lineupA[6];
-    
-    if(lineupB[6] == '')
-        tBL = '-1';
-    else
-        tBL = lineupB[6];
-    
-    if(document.getElementById('cap').value == '')
-        tCap = '-1';
-    else
-        tCap = document.getElementById('cap').value;
+    if(document.getElementById('cap').value != '')
+        cap = document.getElementById('cap').value;
     
     if(document.getElementById('serve').value == 'a')
         tServe = 'true';
@@ -240,10 +240,10 @@ function start()
     
     saved += '"teamA":"' + teamA + '", ';
     saved += '"teamB":"' + teamB + '", ';
-    saved += '"aWins":0, "bWins":0, ';
-    saved += '"sets":' + document.getElementById('sets').value + ', ';
-    saved += '"playTo":' + document.getElementById('playTo').value + ', ';
-    saved += '"cap":' + tCap + ', ';
+    saved += '"aWins":' + aWins + ', "bWins":' + bWins + ', ';
+    saved += '"sets":' + sets + ', ';
+    saved += '"playTo":' + playTo + ', ';
+    saved += '"cap":' + cap + ', ';
     saved += '"aServe":' + tServe + ', ';
     
     saved += '"aLineup":[';
@@ -253,7 +253,7 @@ function start()
     saved += lineupA[3] + ", ";
     saved += lineupA[4] + ", ";
     saved += lineupA[5] + ", ";
-    saved += tAL + '], "bLineup":[';
+    saved += lineupA[6] + '], "bLineup":[';
     
     saved += lineupB[0] + ", ";
     saved += lineupB[1] + ", ";
@@ -261,7 +261,7 @@ function start()
     saved += lineupB[3] + ", ";
     saved += lineupB[4] + ", ";
     saved += lineupB[5] + ", ";
-    saved += tBL + ']';
+    saved += lineupB[6] + ']';
     saved += '}';
 
     Android.finishForm(saved);
