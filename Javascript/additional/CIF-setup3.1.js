@@ -7,13 +7,18 @@ var teamA;
 var teamB;
 var lineupA;
 var lineupB;
-
+var sets;
+var playTo;
+var cap;
 
 function init()
 {
     saved = "";
     teamA = "";
     teamB = "";
+    sets = 0;
+    playTo = 25;
+    cap = "-1";
     openOverlay1();
 }
 
@@ -52,7 +57,7 @@ function openOverlay2()
     document.getElementById('overlay2').style.width = "100%";
 }
 
-function startWithOverlay2(a_team, b_team, a_lineup, b_lineup)
+function startWithOverlay2(a_team, b_team, a_lineup, b_lineup, mSets, mPlayTo, mCap)
 {   
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
@@ -62,6 +67,9 @@ function startWithOverlay2(a_team, b_team, a_lineup, b_lineup)
     document.getElementById('bteamlabel').innerHTML = teamB;
     lineupA = a_lineup;
     lineupB = b_lineup;
+    sets = mSets;
+    playTo = mPlayTo;
+    cap = mCap;
     
     document.getElementById('alineup1').value = a_lineup[0];
     document.getElementById('alineup2').value = a_lineup[1];
@@ -236,7 +244,6 @@ function start()
     saved += '"sets":' + document.getElementById('sets').value + ', ';
     saved += '"playTo":' + document.getElementById('playTo').value + ', ';
     saved += '"cap":' + tCap + ', ';
-    saved += '"timeoutCap":2, ';
     saved += '"aServe":' + tServe + ', ';
     
     saved += '"aLineup":[';
