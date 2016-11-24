@@ -21,6 +21,8 @@ function init()
     aWins = 0;
     bWins = 0;
     sets = 0;
+    lineupA = [];
+    lineupB = [];
     playTo = 25;
     cap = "-1";
     openOverlay1();
