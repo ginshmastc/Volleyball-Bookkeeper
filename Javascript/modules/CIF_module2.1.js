@@ -24,6 +24,7 @@ function getModule() {
     var CIF_SUBCAP = 18;
     var CIF_TIMEOUTS = 2;
     var LINEUP_LEN = 6;
+    var playTo;
     var pointCap;
     var setCap;
     var col;
@@ -80,6 +81,7 @@ function getModule() {
 
             timeoutCap = CIF_TIMEOUTS;
             subCap = CIF_SUBCAP;
+	    playTo = startingData.playTo;
             aServe = startingData.aServe;
 	    pointCap = startingData.cap;
 	    setCap = startingData.sets;
@@ -700,14 +702,14 @@ Called when the set is finished.  Package any game data and send to device.
 */
     var onSetFinished = function (team)
         {
-	    drawText(.05, .05, "set finished");
+	    drawText(.05, .05, "set finished by " + team);
 	    if(team == 'a')
-		aSetsWon++;
+		a_setsWon++;
 	    else if(team == 'b')
-                bSetsWon++;
-	    if(aSetsWon == setCap)
+                b_setsWon++;
+	    if(a_setsWon == setCap)
 		Android.finishGame("a");
-	    else if(bSetsWon == setCap)
+	    else if(b_setsWon == setCap)
 		Android.finishGame("b");
             Android.nextSet(team+"");
         };
