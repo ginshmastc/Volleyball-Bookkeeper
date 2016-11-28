@@ -700,7 +700,7 @@ Called when the set is finished.  Package any game data and send to device.
 */
     var onSetFinished = function (team)
         {
-	    drawtext(.05, .05, "set finished");
+	    drawText(.05, .05, "set finished");
 	    if(team == 'a')
 		aSetsWon++;
 	    else if(team == 'b')
