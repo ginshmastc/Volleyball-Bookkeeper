@@ -700,6 +700,7 @@ Called when the set is finished.  Package any game data and send to device.
 */
     var onSetFinished = function (team)
         {
+	    drawtext(.05, .05, "set finished");
 	    if(team == 'a')
 		aSetsWon++;
 	    else if(team == 'b')
@@ -708,7 +709,7 @@ Called when the set is finished.  Package any game data and send to device.
 		Android.finishGame("a");
 	    else if(bSetsWon == setCap)
 		Android.finishGame("b");
-            Android.nextSet(team);
+            Android.nextSet(team+"");
         };
 
     return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished, onUndo};
