@@ -45,7 +45,7 @@ function getModule() {
         {
             var bgimage = "url('../Images/CIF_image.png')";
             document.getElementById("myBook").style.backgroundImage = bgimage;
-/*
+
             a_points = 0;
             a_lineup = startingData.aLineup.slice(0);
             a_teamName = startingData.teamA;
@@ -113,7 +113,7 @@ function getModule() {
             setFontColor(col);
             
             drawScore();
-*/
+
         };
 
     var onPoint = function (team, libero)
