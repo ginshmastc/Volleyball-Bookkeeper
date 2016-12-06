@@ -60,7 +60,8 @@ function openOverlay2()
     document.getElementById('bteamlabel').innerHTML = teamB;
     sets = document.getElementById('sets').value;
     playTo = document.getElementById('playTo').value;
-    cap = document.getElementById('cap').value;
+    if(document.getElementById('cap').value != '')
+        cap = document.getElementById('cap').value;
     
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
