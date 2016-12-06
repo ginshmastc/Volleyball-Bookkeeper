@@ -24,7 +24,7 @@ function init()
     lineupA = [];
     lineupB = [];
     playTo = 25;
-    cap = "-1";
+    cap = 0;
     openOverlay1();
 }
 
