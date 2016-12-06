@@ -43,7 +43,6 @@ function getModule() {
 
     var onStart = function ()
         {
-	    Android.setTeams(startingData.teamA, startingData.teamB);
             var bgimage = "url('../Images/CIF_image.png')";
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
