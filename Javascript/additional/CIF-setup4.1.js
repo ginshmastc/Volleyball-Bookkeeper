@@ -181,8 +181,7 @@ function backRotate(team)
 
 function start()
 {
-    var saved = '{';
-    
+    saved = '{';
     lineupA[0] = document.getElementById('alineup1').value;
     lineupA[1] = document.getElementById('alineup2').value;
     lineupA[2] = document.getElementById('alineup3').value;
