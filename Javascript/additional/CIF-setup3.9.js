@@ -53,7 +53,7 @@ function openOverlay2()
         Android.toast('Need to input a score to play to!');
         return;
     }
-    
+    saved = "";
     teamA = document.getElementById('teamA').value;
     teamB = document.getElementById('teamB').value;
     document.getElementById('ateamlabel').innerHTML = teamA;
@@ -70,6 +70,7 @@ function openOverlay2()
 function startWithOverlay2(webdata, a_wins, b_wins)
 {   
     resetOverlays();
+    saved = "";
     var tempdata = JSON.parse(webdata);
     document.getElementById('overlay2').style.width = "100%";
     teamA = tempdata.teamA;
