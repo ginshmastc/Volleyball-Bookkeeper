@@ -265,6 +265,7 @@ function start()
     saved += lineupB[6] + ']';
     saved += '}';
 
+    resetOverlays();
     Android.finishForm(saved);
     
 }
