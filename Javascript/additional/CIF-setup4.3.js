@@ -68,7 +68,7 @@ function openOverlay2()
 }
 
 function startWithOverlay2(webdata, a_wins, b_wins)
-{   
+{
     resetOverlays();
     saved = "";
     var tempdata = JSON.parse(webdata);
