@@ -110,8 +110,8 @@ function switchSides()
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
     
-    temp = a_wins;
-    aWins = b_wins;
+    temp = aWins;
+    aWins = bWins;
     bWins = temp;
     
     temp = document.getElementById('alineup1').value;
