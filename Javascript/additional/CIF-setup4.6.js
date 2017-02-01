@@ -104,36 +104,43 @@ function startWithOverlay2(webdata, a_wins, b_wins)
 
 function switchSides()
 {
-    document.getElementById('overlay2').style.width = "100%";
     var temp = teamA;
     teamA = teamB;
     teamB = temp;
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
     
-    temp = lineupA;
-    lineupA = lineupB;
-    lineupB = temp;
-    
     temp = a_wins;
     aWins = b_wins;
     bWins = temp;
     
-    document.getElementById('alineup1').value = lineupA[0];
-    document.getElementById('alineup2').value = lineupA[1];
-    document.getElementById('alineup3').value = lineupA[2];
-    document.getElementById('alineup4').value = lineupA[3];
-    document.getElementById('alineup5').value = lineupA[4];
-    document.getElementById('alineup6').value = lineupA[5];
-    document.getElementById('alineupL').value = lineupA[6];
+    temp = document.getElementById('alineup1').value;
+    document.getElementById('alineup1').value = document.getElementById('blineup1').value;
+    document.getElementById('blineup1').value = temp;
     
-    document.getElementById('blineup1').value = lineupB[0];
-    document.getElementById('blineup2').value = lineupB[1];
-    document.getElementById('blineup3').value = lineupB[2];
-    document.getElementById('blineup4').value = lineupB[3];
-    document.getElementById('blineup5').value = lineupB[4];
-    document.getElementById('blineup6').value = lineupB[5];
-    document.getElementById('blineupL').value = lineupB[6];
+    temp = document.getElementById('alineup2').value;
+    document.getElementById('alineup2').value = document.getElementById('blineup2').value;
+    document.getElementById('blineup2').value = temp;
+    
+    temp = document.getElementById('alineup3').value;
+    document.getElementById('alineup3').value = document.getElementById('blineup3').value;
+    document.getElementById('blineup3').value = temp;
+    
+    temp = document.getElementById('alineup4').value;
+    document.getElementById('alineup4').value = document.getElementById('blineup4').value;
+    document.getElementById('blineup4').value = temp;
+    
+    temp = document.getElementById('alineup5').value;
+    document.getElementById('alineup5').value = document.getElementById('blineup5').value;
+    document.getElementById('blineup5').value = temp;
+    
+    temp = document.getElementById('alineup6').value;
+    document.getElementById('alineup6').value = document.getElementById('blineup6').value;
+    document.getElementById('blineup6').value = temp;
+    
+    temp = document.getElementById('alineupL').value;
+    document.getElementById('alineupL').value = document.getElementById('blineupL').value;
+    document.getElementById('blineupL').value = temp;
 }
 
 function rotate(team)
