@@ -100,7 +100,7 @@ function startWithOverlay2(webdata, a_wins, b_wins)
     document.getElementById('blineup5').value = lineupB[4];
     document.getElementById('blineup6').value = lineupB[5];
     document.getElementById('blineupL').value = lineupB[6];
-    
+    Android.test(aWins + ' ' + bWins + ' ' + sets);
     if(a_wins == b_wins && a_wins + 1 == sets)
     {//If final set, go to overlay1 first to set score parameters for final set
         Android.test('final set');
