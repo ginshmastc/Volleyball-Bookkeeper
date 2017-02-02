@@ -42,27 +42,32 @@ function openOverlay1()
 
 function openOverlay2()
 {   
+    Android.test('1');
     if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
         Android.toast('Team name is missing!');
         return;
     }
-    
+    Android.test('2');
     if(document.getElementById('playTo').value == '')
     {
         Android.toast('Need to input a score to play to!');
         return;
     }
+    Android.test('3');
     saved = "";
     teamA = document.getElementById('teamA').value;
     teamB = document.getElementById('teamB').value;
+    Android.test('4');
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
+    Android.test('5');
     sets = document.getElementById('sets').value;
     playTo = document.getElementById('playTo').value;
+    Android.test('6');
     if(document.getElementById('cap').value != '')
         cap = document.getElementById('cap').value;
-    
+    Android.test('7');
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
 }
@@ -113,11 +118,13 @@ function startWithOverlay2(webdata, a_wins, b_wins)
         
         document.getElementById('teamALabel').innerHTML = 'Final Set: ';
         document.getElementById('teamBLabel').hidden = true;
-        /*
+        
         document.getElementById('sets1').hidden = true;
         document.getElementById('sets2').hidden = true;
         document.getElementById('sets3').hidden = true;
-        */
+        
+        document.getElementById('playTo').value = '15';
+        
         document.getElementById("overlay1").style.width = "100%";
     }
     else
