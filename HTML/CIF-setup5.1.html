@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../CSS/CIF-setup.css">
-<script src="../Javascript/additional/CIF-setup5.0.js"></script>
+<script src="../Javascript/additional/CIF-setup5.1.js"></script>
 
 <title>Volleyball Bookkeeper</title>
 </head>
@@ -12,20 +12,20 @@
 <div id = "overlay1" class = "overlay1">
 <div id = "content1" class = "content1"> 
 <div class = 'left'>
-<label>Team A: <input type = 'text' id = 'teamA' class = 'team' name = 'teamA' required></label>
+<label id = 'teamALabel'>Team A: <input type = 'text' id = 'teamA' class = 'team' name = 'teamA' required></label>
 
   <div>
-    <label><input type = 'radio' id = 'sets' name = 'sets' value = '2' checked> 2 out of 3</label><br>
-    <label><input type = 'radio' id = 'sets' name = 'sets' value = '3'> 3 out of 5</label><br>
-    <label><input type = 'radio' id = 'sets' name = 'sets' value = '1'> Single</label>
+    <label id = 'sets2'><input type = 'radio' id = 'sets' name = 'sets' value = '2' checked> 2 out of 3</label><br>
+    <label id = 'sets3'><input type = 'radio' id = 'sets' name = 'sets' value = '3'> 3 out of 5</label><br>
+    <label id = 'sets1'><input type = 'radio' id = 'sets' name = 'sets' value = '1'> Single</label>
   </div>
 </div>
 
 <div class = 'right'>
   <div>
-    </label><label>Team B: <input type = 'text' id = 'teamB' class = 'team' name = 'teamB' required></label><br>
-    </label><label>Play to: &nbsp; &nbsp; <input class = 'num' type = 'number' id = 'playTo' name = 'playTo' min = '1' value = '25'></label><br>
-    </label><label>Point cap: <input class = 'num' type = 'number' id = 'cap' name = 'cap' ></label><br>
+    <label id = 'teamBLabel'>Team B: <input type = 'text' id = 'teamB' class = 'team' name = 'teamB' required></label><br>
+    <label>Play to: &nbsp; &nbsp; <input class = 'num' type = 'number' id = 'playTo' name = 'playTo' min = '1' value = '25'></label><br>
+    <label>Point cap: <input class = 'num' type = 'number' id = 'cap' name = 'cap' ></label><br>
     <a href="javascript:void(0)" class="next" onclick="openOverlay2()">Continue</a>
   </div>
 </div>
