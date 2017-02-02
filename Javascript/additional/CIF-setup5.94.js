@@ -42,6 +42,14 @@ function openOverlay1()
 
 function openOverlay2()
 {   
+    document.getElementById('teamA').hidden = false;
+    document.getElementById('teamB').hidden = false;
+        
+    document.getElementById('teamBLabel').hidden = false;
+        
+    document.getElementById('sets1').hidden = false;
+    document.getElementById('sets2').hidden = false;
+    document.getElementById('sets3').hidden = false;
     Android.test('1');
     if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
