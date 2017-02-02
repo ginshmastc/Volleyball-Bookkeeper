@@ -42,9 +42,10 @@ function openOverlay1()
 
 function openOverlay2()
 {   
+    Android.test('1');
     document.getElementById('teamA').hidden = false;
     document.getElementById('teamB').hidden = false;
-        
+        Android.test('1');
     document.getElementById('teamBLabel').hidden = false;
         
     document.getElementById('sets1').hidden = false;
