@@ -104,7 +104,7 @@ function startWithOverlay2(webdata, a_wins, b_wins)
     if(a_wins == b_wins && a_wins + 1 == sets)
     {//If final set, go to overlay1 first to set score parameters for final set
         Android.test('final set');
-        
+        /*
         document.getElementById('teamA').value = teamA;
         document.getElementById('teamB').value = teamB;
         
@@ -113,7 +113,7 @@ function startWithOverlay2(webdata, a_wins, b_wins)
         
         document.getElementById('teamALabel').innerHTML = 'Final Set: ';
         document.getElementById('teamBLabel').hidden = true;
-        /*
+        
         document.getElementById('sets1').hidden = true;
         document.getElementById('sets2').hidden = true;
         document.getElementById('sets3').hidden = true;
