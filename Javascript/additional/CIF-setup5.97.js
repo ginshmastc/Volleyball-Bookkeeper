@@ -32,6 +32,7 @@ function resetOverlays()
 {
     document.getElementById("overlay1").style.width = "0%";
     document.getElementById("overlay2").style.width = "0%";
+    document.getElementById("overlay3").style.width = "0%";
 }
 
 function openOverlay1()
