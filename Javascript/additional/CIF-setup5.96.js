@@ -119,26 +119,17 @@ function startWithOverlay2(webdata, a_wins, b_wins)
     {//If final set, go to overlay1 first to set score parameters for final set
         Android.test('final set');
         
-        document.getElementById('teamA').value = teamA;
-        document.getElementById('teamB').value = teamB;
-        
-        document.getElementById('teamA').hidden = true;
-        document.getElementById('teamB').hidden = true;
-        
-        document.getElementById('teamALabel').innerHTML = 'Final Set: ';
-        document.getElementById('teamBLabel').hidden = true;
-        
-        document.getElementById('sets1').hidden = true;
-        document.getElementById('sets2').hidden = true;
-        document.getElementById('sets3').hidden = true;
-        
-        document.getElementById('playTo').value = '15';
-        
-        document.getElementById("overlay1").style.width = "100%";
+        openOverlay3();
     }
     else
         document.getElementById('overlay2').style.width = "100%";
         
+}
+
+function openOverlay3()
+{
+    resetOverlays();
+    document.getElementById("overlay3").style.width = "100%";
 }
 
 function switchSides()
