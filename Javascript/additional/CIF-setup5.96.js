@@ -42,41 +42,51 @@ function openOverlay1()
 
 function openOverlay2()
 {   
-    Android.test('1');
-    document.getElementById('teamA').hidden = false;
-    document.getElementById('teamB').hidden = false;
-        Android.test('1');
-    document.getElementById('teamBLabel').hidden = false;
-        
-    document.getElementById('sets1').hidden = false;
-    document.getElementById('sets2').hidden = false;
-    document.getElementById('sets3').hidden = false;
-    Android.test('1');
     if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
         Android.toast('Team name is missing!');
         return;
     }
-    Android.test('2');
+    
     if(document.getElementById('playTo').value == '')
     {
         Android.toast('Need to input a score to play to!');
         return;
     }
-    Android.test('3');
+    
     saved = "";
     teamA = document.getElementById('teamA').value;
     teamB = document.getElementById('teamB').value;
-    Android.test('4');
+    
     document.getElementById('ateamlabel').innerHTML = teamA;
     document.getElementById('bteamlabel').innerHTML = teamB;
-    Android.test('5');
+    
     sets = document.getElementById('sets').value;
     playTo = document.getElementById('playTo').value;
-    Android.test('6');
+    
     if(document.getElementById('cap').value != '')
         cap = document.getElementById('cap').value;
-    Android.test('7');
+    
+    resetOverlays();
+    document.getElementById('overlay2').style.width = "100%";
+}
+
+function fsOpenOverlay2()
+{   
+    if(document.getElementById('fsplayTo').value == '')
+    {
+        Android.toast('Need to input a score to play to!');
+        return;
+    }
+    saved = "";
+    document.getElementById('ateamlabel').innerHTML = teamA;
+    document.getElementById('bteamlabel').innerHTML = teamB;
+    
+    playTo = document.getElementById('fsplayTo').value;
+    
+    if(document.getElementById('fscap').value != '')
+        cap = document.getElementById('fscap').value;
+    
     resetOverlays();
     document.getElementById('overlay2').style.width = "100%";
 }
