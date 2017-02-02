@@ -115,7 +115,7 @@ function startWithOverlay2(webdata, a_wins, b_wins)
         document.getElementById('teamBLabel').hidden = true;
         
         document.getElementById('sets1').hidden = true;
-        document.getElementById('sets2').hidden = true;
+        document.getElementById('sets2').value = 'Final set: ';
         document.getElementById('sets3').hidden = true;
         
         document.getElementById("overlay1").style.width = "100%";
