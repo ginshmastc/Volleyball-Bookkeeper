@@ -710,7 +710,7 @@ Called when the set is finished.  Package any game data and send to device.
 		Android.finishGame("a");
 	    else if(b_setsWon == setCap)
 		Android.finishGame("b");
-            Android.nextSet(team+"");
+            Android.nextSet(a_setsWon, b_setsWon);
         };
 
     return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished, onUndo};
