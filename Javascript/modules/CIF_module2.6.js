@@ -663,6 +663,7 @@ award: true if a point is awarded, false if not
                 aServe = true;
                 drawAText("P" + a_points);//need to squre text
             }
+	    drawScore();
         };
 
     var onUndo = function ()
