@@ -33,8 +33,7 @@
 .content2 {
     position: relative;
     margin-top: 25px;
-    margin: 0;
-    width: 50%;
+    margin: auto;
     top: 100%;
 }
 
@@ -76,7 +75,10 @@ input {
     color: yellow;
 }
 
-
+.lineupdiv {
+    margin: auto;
+    text-align: center;
+}
 
 
 .left {
@@ -117,7 +119,7 @@ input {
 .numeral {
   display: inline-block;
   width: 25px;
-  text-align: center;
+  margin: auto;
 }
 
 .rotate {
