@@ -1,0 +1,100 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../CSS/CIF-setup1.5.css">
+<script src="../Javascript/additional/CIF-setup5.99.js"></script>
+
+<title>Volleyball Bookkeeper</title>
+</head>
+
+<body onload = "init()">
+
+<div id = "overlay1" class = "overlay1">
+<div id = "content1" class = "content1"> 
+<div class = 'left'>
+<label id = 'teamALabel'>Team A: <input type = 'text' id = 'teamA' class = 'team' name = 'teamA' maxlength = '10' required></label>
+
+  <div>
+    <label id = 'sets2'><input type = 'radio' id = 'sets' name = 'sets' value = '2' checked> 2 out of 3</label><br>
+    <label id = 'sets3'><input type = 'radio' id = 'sets' name = 'sets' value = '3'> 3 out of 5</label><br>
+    <label id = 'sets1'><input type = 'radio' id = 'sets' name = 'sets' value = '1'> Single</label>
+  </div>
+</div>
+
+<div class = 'right'>
+  <div>
+    <label id = 'teamBLabel'>Team B: <input type = 'text' id = 'teamB' class = 'team' name = 'teamB' maxlength = '10' required></label><br>
+    <label>Play to: &nbsp; &nbsp; <input class = 'num' type = 'number' id = 'playTo' name = 'playTo' min = '1' max = '256' value = '25'></label><br>
+    <label>Point cap: <input class = 'num' type = 'number' id = 'cap' name = 'cap' min = '0' max = '256'></label><br>
+    <a href="javascript:void(0)" class="next" onclick="openOverlay2()">Continue</a>
+  </div>
+</div>
+
+</div></div>
+
+
+<div id = "overlay2" class = "overlay2">
+<div id = "content2" class = "content2">
+<div class = 'left'>
+
+  <div class = lineupdiv>
+    <label id = 'ateamlabel'>Team A</label><br>
+
+    <label class = 'numeral'>I:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '1' id = 'alineup1' tabindex = '1'>
+    <label class = 'numeral'>VI:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '6' id = 'alineup6' tabindex = '6'>
+    <label class = 'numeral'>V:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '5' id = 'alineup5' tabindex = '5'><br>
+
+    <label class = 'numeral'>II:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '2' id = 'alineup2' tabindex = '2'>
+    <label class = 'numeral'>III:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '3' id = 'alineup3' tabindex = '3'>
+    <label class = 'numeral'>IV:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '4' id = 'alineup4' tabindex = '4'><br>
+
+    <label class = 'numeral'>L:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '7' id = 'alineupL' tabindex = '7'><br>
+
+    <label class = 'servelabel'>1st Serve</label><input type = 'radio' id = 'serve' name = 'serve' value = 'a' checked>
+    <button class = 'brotate' onClick = 'backRotate("a")'></button>
+    <button class = 'rotate' onClick = 'rotate("a")'></button><br>
+
+  </div>
+</div>
+<div class = 'right'>
+  <div class = 'lineupdiv'>
+    <label id = 'bteamlabel'>Team B</label><br>
+
+    <label class = 'numeral'>I:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '1' id = 'blineup1' tabindex = '9'>
+    <label class = 'numeral'>VI:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '6' id = 'blineup6' tabindex = '14'>
+    <label class = 'numeral'>V:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '5' id = 'blineup5' tabindex = '13'><br>
+    <label class = 'numeral'>II:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '2' id = 'blineup2' tabindex = '10'>
+    <label class = 'numeral'>III:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '3' id = 'blineup3' tabindex = '11'>
+    <label class = 'numeral'>IV:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '4' id = 'blineup4' tabindex = '12'><br>
+
+
+    <label class = 'numeral'>L:</label><input class = 'lineup' type = 'number' min = '0' max = '255' value = '7' id = 'blineupL' tabindex = '15'><br>
+
+    <label class = 'servelabel'>1st Serve</label><input type = 'radio' id = 'serve' name = 'serve' value = 'b'>
+    <button class = 'brotate' onClick = 'backRotate("b")'></button>
+    <button class = 'rotate' onClick = 'rotate("b")'></button><br>
+    <a href="javascript:void(0)" class="next" onclick="start()">Continue</a>
+  </div>
+</div>
+</div></div>
+ 
+<div id = "overlay3" class = "overlay3">
+<div id = "content3" class = "content3"> 
+ 
+<div class = 'left'>
+<label id = 'fslabel'>Final Set: </label>
+</div>
+
+<div class = 'right'>
+  <div>
+    <label>Play to: &nbsp; &nbsp; <input class = 'num' type = 'number' id = 'fsplayTo' name = 'fsplayTo' min = '1' max = '255' value = '15'></label><br>
+    <label>Point cap: <input class = 'num' type = 'number' id = 'fscap' min = '0' max = '255' name = 'fscap' ></label><br>
+    <a href="javascript:void(0)" class="next" onclick="fsOpenOverlay2()">Continue</a>
+  </div>
+</div>
+
+</div></div>
+
+</body>
+</html> 
+
