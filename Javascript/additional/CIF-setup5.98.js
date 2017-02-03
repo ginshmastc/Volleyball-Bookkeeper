@@ -32,7 +32,7 @@ function resetOverlays()
 {
     document.getElementById("overlay1").style.width = "0%";
     document.getElementById("overlay2").style.width = "0%";
-    document.getElementById("overlay3").style.width = "0%";
+    //document.getElementById("overlay3").style.width = "0%";
 }
 
 function openOverlay1()
@@ -130,7 +130,7 @@ function startWithOverlay2(webdata, a_wins, b_wins)
     {//If final set, go to overlay1 first to set score parameters for final set
         Android.test('final set');
         
-        openOverlay3();
+        //openOverlay3();
     }
     else
         document.getElementById('overlay2').style.width = "100%";
