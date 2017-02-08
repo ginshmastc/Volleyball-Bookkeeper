@@ -12,12 +12,12 @@
 </head>
 
 <body onload="init()">
-
+<!--div containing the book (background image template) and the markings (writing in the foreground) -->
 <div id = "myBook" class = "book">
 <canvas class = "markings" id="myCanvas"></canvas>
 
 </div>
-
+<!--This overlay is used to input content into the book.  It allows rewarding points, making subs, calling timeouts, and penalties -->
 <div id="overlay" class="overlay">
 
   <a href="javascript:void(0)" class="undobtn" onclick="onUndo()">Undo</a>
@@ -41,7 +41,7 @@
     </div>
   </div>
 </div>
-
+<!--This overlay is used to finish a substition. -->
 <div id="subOverlay" class="subOverlay">
   <a href="javascript:void(0)" class="subbtn" onclick="subPressed()">Sub</a>
   <a href="javascript:void(0)" class="closebtn" onclick="closeSubMenu()">&times;</a>
@@ -66,7 +66,7 @@
 
   </div>
 </div>
-
+<!--This overlay is used to finish a penalty. -->
 <div id="penOverlay" class="penOverlay">
 
   <a href="javascript:void(0)" class="closebtn" onclick="closePenMenu()">&times;</a>
