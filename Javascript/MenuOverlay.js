@@ -3,6 +3,9 @@ This file contains the functions for the menu overlay that operates the book.
 */
 var curTeam;
 
+/*
+Opens the input menu.  Libero served checkbox should be checked if the libero previously served in the current location.
+*/
 function openMenu() {
     document.getElementById("overlay").style.width = "100%";
     if(aServe)
@@ -22,17 +25,26 @@ function openMenu() {
             
 }
 
+/*
+Closes the input menu.
+*/
 function closeMenu() {
     document.getElementById("overlay").style.width = "0%";
     closeSubMenu();
 }
 
+/*
+Wrapper function for the onPoint function to check if the libero field is checked.
+*/
 function pointPressed(team)
 {
     var lib = document.getElementById("libero").checked;
     onPoint(team, lib);
 }
 
+/*
+Opens the substitution overlay and changes the fields to reflect the current lineup of the subbing team
+*/
 function openSubMenu(team) {
     closePenMenu();
     curTeam = team;
@@ -65,10 +77,16 @@ function openSubMenu(team) {
     document.getElementById("subOverlay").style.width = "100%";
 }
 
+/*
+Closes the substitution menu.
+*/
 function closeSubMenu() {
     document.getElementById("subOverlay").style.width = "0%";
 }
 
+/*
+Makes the inputted substitutions
+*/
 function subPressed() {
     var subs = ["0", "0", "0", "0", "0", "0"];
     subs[0] = document.getElementById("subin1").value;
@@ -82,6 +100,9 @@ function subPressed() {
     closeSubMenu();
 }
 
+/*
+Opens the penalty menu.
+*/
 function openPenMenu(team) {
     curTeam = team;
     closeSubMenu();
@@ -89,10 +110,16 @@ function openPenMenu(team) {
 
 }
 
+/*
+Closes the penalty menu.
+*/
 function closePenMenu() {
     document.getElementById("penOverlay").style.width = "0%";
 }
 
+/*
+Finishes a penalty given.
+*/
 function penaltyPressed()
 {
     var com = document.getElementById('comments').value;
