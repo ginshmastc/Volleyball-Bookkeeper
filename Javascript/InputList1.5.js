@@ -123,9 +123,9 @@ function gameString()
 /*
 Appends a linked list of input from a string of game data.
 */
-function loadGameData(String gamedata)
+function loadGameData(gamedata)
 {
-    if(gamedata[0] == '[')//remove the [surrounding []
+    if(gamedata.charAt(0) == '[')//remove the [surrounding []
         gamedata = gamedata.slice(1, -1);
     
     var inputlist = gamedata.split(',');
