@@ -50,6 +50,10 @@ function setStartingData(data, url)
 {
     startingJSON = data;
     startingData = JSON.parse(data);
+	
+    if(!startingData.input === null)
+	loadGameData(startingData.input);
+    
 
     var script = document.createElement('script');
     script.onload = function() {
