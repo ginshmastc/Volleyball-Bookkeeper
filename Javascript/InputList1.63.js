@@ -103,7 +103,7 @@ function lengthInput()
 
 /*
 Deconstructs the linked list and appends it to the starting data JSON.
-*//*
+*/
 function gameString(startdata)
 {
     initIterator();
@@ -117,11 +117,11 @@ function gameString(startdata)
     }
     content = content.slice(0, -1) + ']}';
     return content;
-}*/
+}
 
 /*
 Appends a linked list of input from a string of game data.
-*//*
+*/
 function loadGameData(gamedata)
 {
     if(gamedata.charAt(0) == '[')//remove the [surrounding []
@@ -136,5 +136,5 @@ function loadGameData(gamedata)
 function packageDataForAndroid()
 {
     Android.getPackage(gameString());
-}*/
+}
 
