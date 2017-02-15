@@ -136,7 +136,6 @@ function loadGameData(gamedata)
 
 function packageDataForAndroid()
 {
-    var pack = toString();
-    Android.getPackage(pack);
+    Android.getPackage(gameString());
 }
 
