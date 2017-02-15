@@ -100,12 +100,11 @@ function lengthInput()
 {
     return inputLength;
 }
-
+/*
 /*
 Deconstructs the linked list and appends it to the starting data JSON.
 */
-
-function toString()
+function gameString()
 {
     initIterator();
     var content = startingData.slice(0, -1) + ', "input":[';
@@ -140,4 +139,4 @@ function packageDataForAndroid()
     var pack = toString();
     Android.getPackage(pack);
 }
-
+*/
