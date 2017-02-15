@@ -316,7 +316,7 @@ function start()
         }
     
     var tServe;
-    if(document.getElementById('serve').value == 'a')
+    if(document.getElementByName('serve').value == 'a')
         tServe = 'true';
     else
         tServe = 'false';
