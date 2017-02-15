@@ -135,6 +135,7 @@ function loadGameData(gamedata)
 
 function packageDataForAndroid()
 {
+    Android.test("creating package...");
     Android.getPackage(gameString());
 }
 
