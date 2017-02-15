@@ -100,7 +100,7 @@ function lengthInput()
 {
     return inputLength;
 }
-/*
+
 /*
 Deconstructs the linked list and appends it to the starting data JSON.
 */
@@ -139,4 +139,4 @@ function packageDataForAndroid()
     var pack = toString();
     Android.getPackage(pack);
 }
-*/
+
