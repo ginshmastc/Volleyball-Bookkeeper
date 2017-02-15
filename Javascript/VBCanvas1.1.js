@@ -12,6 +12,7 @@ var canvasReady;
 var fontFamily;
 var fontSize;
 var startingData;
+var startingJSON;
 
 /*
 Prepares the canvas to be drawn on by storing the canvas object, context, width,
@@ -47,6 +48,7 @@ Inputs the starting match data.
 */
 function setStartingData(data, url)
 {
+    startingJSON = data;
     startingData = JSON.parse(data);
 
     var script = document.createElement('script');
