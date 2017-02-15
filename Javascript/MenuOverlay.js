@@ -128,3 +128,4 @@ function penaltyPressed()
     closePenMenu();
     closeMenu();
 }
+
