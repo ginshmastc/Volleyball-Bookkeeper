@@ -126,6 +126,7 @@ Appends a linked list of input from a string of game data.
 */
 function loadGameData(gamedata)
 {
+    Android.test("loading data...");
     if(gamedata.charAt(0) == '[')//remove the [surrounding []
         gamedata = gamedata.slice(1, -1);
     
