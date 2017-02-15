@@ -102,33 +102,37 @@ function lengthInput()
 }
 
 /*
-Deconstructs the linked list into its stored form.
+Deconstructs the linked list and appends it to the starting data JSON.
 */
-/*
+
 function toString()
 {
     initIterator();
-    var content = "";
+    var content = startingData.slice(0, -1) + ', "input":[';
+    
+    
     var curElement = nextInput();
     while(curElement != null)
     {
-        content += '\\INPUT' + curElement.data;
+        content += '"' + curElement.data + '", ';
         curElement = nextInput();
     }
-    
+    content = content.slice(0, -1) + ']}';
     return content;
 }
-*/
+
 /*
 Appends a linked list of input from a string of game data.
-*//*
+*/
 function loadGameData(String gamedata)
 {
-    var inputlist = gamedata.split('\\INPUT');
+    if(gamedata[0] == '[')//remove the [surrounding []
+        gamedata = gamedata.slice(1, -1);
+    
+    var inputlist = gamedata.split(',');
     var len = inputlist.length;
     for(i = 0; i < len; i++)
         addInput(new Node(inputlist[i]));
-    
 }
 
 function packageDataForAndroid()
@@ -136,4 +140,4 @@ function packageDataForAndroid()
     var pack = toString();
     Android.getPackage(pack);
 }
-*/
+
