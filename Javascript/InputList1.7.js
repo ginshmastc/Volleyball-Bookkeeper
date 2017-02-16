@@ -133,10 +133,9 @@ function loadGameData(gamedata)
         addInput(new Node(inputlist[i]));
 }
 
-function packageDataForAndroid()
+function getGameDataPackage()
 {
     Android.test("creating package...");
-    Android.test(startingJSON);
-    Android.getPackage(gameString(startingJSON));
+    return gameString(startingJSON);
 }
 
