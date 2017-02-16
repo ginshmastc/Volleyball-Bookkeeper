@@ -108,16 +108,13 @@ function gameString(startdata)
 {
     initIterator();
     var content = startdata.slice(0, -1) + ', "input":[';
-     Android.test(content);
     var curElement = nextInput();
     while(curElement != null)
     {
-         Android.test(content);
         content += '"' + curElement.data + '", ';
         curElement = nextInput();
     }
     content = content.slice(0, -1) + ']}';
-    Android.test(content);
     return content;
 }
 
