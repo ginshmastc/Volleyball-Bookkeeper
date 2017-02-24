@@ -51,9 +51,10 @@ function setStartingData(data, url)
     startingJSON = data;
     startingData = JSON.parse(data);
 	
-    if(!startingData.input === null)
+	Android.test("Attempting to load input...");
+    if(!(startingData.input === null))
 	loadGameData(startingData.input);
-    
+    Android.test("Input finished.");
 
     var script = document.createElement('script');
     script.onload = function() {
@@ -64,6 +65,7 @@ function setStartingData(data, url)
     else
         script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
+	Android.test("module loaded.");
 }
 
 /*
