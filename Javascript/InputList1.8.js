@@ -114,7 +114,7 @@ function gameString(startdata)
         content += '"' + curElement.data + '", ';
         curElement = nextInput();
     }
-    content = content.slice(0, -1) + ']}';
+    content = content.slice(0, -2) + ']}';
     return content;
 }
 
