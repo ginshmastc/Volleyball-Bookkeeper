@@ -52,7 +52,7 @@ function setStartingData(data, url)
     startingData = JSON.parse(data);
 	
 	Android.test("Attempting to load input...");
-    if(startingData.input != null)
+    if(startingData.input)
 	loadGameData(startingData.input);
     Android.test("Input finished.");
 
