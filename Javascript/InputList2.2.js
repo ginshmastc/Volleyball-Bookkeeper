@@ -107,7 +107,7 @@ Deconstructs the linked list and appends it to the starting data JSON.
 function gameString(startdata)
 {
     initIterator();
-    var content = startdata.slice(0, -1) + ', "input":[';
+    var content = startdata.slice(0, -1) + ', "input":[  ';
     var curElement = nextInput();
     while(curElement != null)
     {
