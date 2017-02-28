@@ -64,7 +64,10 @@ lib: is the libero box checked?
 function onPoint(team, lib)
 {
     module.onPoint(team, lib);
-    addInput(new Node("p"+"\n"+team+"\n"+lib));
+    var foo = 't';
+    if(!lib)
+        foo = 'f';
+    addInput(new Node("p"+"\n"+team+"\n"+foo));
     closeMenu();
 }
 
@@ -101,8 +104,11 @@ award: true if a point should be awarded to the opposing team.
 */
 function onPenalty(team, additionalComments, award)
 {
+    var foo = 't';
+    if(!award)
+        foo = 'f';
     module.onPenalty(team, additionalComments, award);
-    addInput(new Node("e\n"+team+"\n"+award+"\n"+additionalComments));
+    addInput(new Node("e\n"+team+"\n"+foo+"\n"+additionalComments));
     closeMenu();
 }
 
