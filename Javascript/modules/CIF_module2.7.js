@@ -679,7 +679,7 @@ award: true if a point is awarded, false if not
                 var d = cur.data.split('\n');
                 switch(d[0]) {
                     case 'p':
-                      onPoint(d[1], d[2] === 'true');
+                      onPoint(d[1], d[2] === 't');
                       break;
                     case 't':
                       onTimeout(d[1]);
@@ -688,7 +688,7 @@ award: true if a point is awarded, false if not
                       sub(d[1], d[3], parseInt(d[2]));
                       break;
                     case 'e':
-                      onPenalty(d[1], d[3], d[2] === 'true');
+                      onPenalty(d[1], d[3], d[2] === 't');
                       break;
                     default:
                 } 
