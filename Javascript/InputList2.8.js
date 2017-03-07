@@ -125,14 +125,14 @@ function loadGameData(gamedata)
 {
     Android.test("loading data... " + gamedata);
     
-    var inputlist = gamedata.split(",");
+    var splitdata = gamedata.split(",");
     Android.test("split finished.");
-    var len = inputlist.length;
+    var len = splitdata.length;
     Android.test("length: " + len);
     for(i = 0; i < len; i++)
     {
-        Android.test(i+" "+inputlist[i]);
-        addInput(new Node(inputlist[i]));
+        Android.test(i+" "+splitdata[i]);
+        addInput(new Node(splitdata[i]));
     }
 }
 
