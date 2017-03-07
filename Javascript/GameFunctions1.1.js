@@ -38,6 +38,7 @@ var timeoutCap; //max number of timeouts per team (usually 2)
 var aServe; //boolean if team a is serving
 var input; //array containing all input
 var comments;//additional comments
+var separator = ">><<";
 
 var module;
 
@@ -67,7 +68,7 @@ function onPoint(team, lib)
     var foo = 't';
     if(!lib)
         foo = 'f';
-    addInput(new Node("p"+"\n"+team+"\n"+foo));
+    addInput(new Node("p"+separator+team+separator+foo));
     closeMenu();
 }
 
@@ -81,7 +82,7 @@ function onSubstitution(subs, team)
     module.onSubstitution(subs, team);
     for(i=0; i<6; i++)
         if(subs[i] != '')
-            addInput(new Node("s\n"+team+"\n"+(i + 1)+"\n"+subs[i]));
+            addInput(new Node("s"+separator+team+separator+(i + 1)+separator+subs[i]));
     closeMenu();
 }
 
@@ -92,7 +93,7 @@ team: which side timeout button is pressed.
 function onTimeout(team)
 {
     module.onTimeout(team);
-    addInput(new Node("t\n"+team));
+    addInput(new Node("t"+separator+team));
     closeMenu();
 }
 
@@ -108,7 +109,7 @@ function onPenalty(team, additionalComments, award)
     if(!award)
         foo = 'f';
     module.onPenalty(team, additionalComments, award);
-    addInput(new Node("e\n"+team+"\n"+foo+"\n"+additionalComments));
+    addInput(new Node("e"+separator+team+separator+foo+separator+additionalComments));
     closeMenu();
 }
 
