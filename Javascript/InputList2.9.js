@@ -125,7 +125,7 @@ function loadGameData(gamedata)
 {
     Android.test("loading data... " + gamedata);
     
-    var splitdata = gamedata.split(",");
+    var splitdata = gamedata.toString().split(",");
     Android.test("split finished.");
     var len = splitdata.length;
     Android.test("length: " + len);
