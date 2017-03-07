@@ -126,6 +126,7 @@ function loadGameData(gamedata)
     Android.test("loading data... " + gamedata);
     
     var inputlist = gamedata.split(",");
+    Android.test("split finished.");
     var len = inputlist.length;
     Android.test("length: " + len);
     for(i = 0; i < len; i++)
