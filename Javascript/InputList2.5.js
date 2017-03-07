@@ -124,11 +124,10 @@ Appends a linked list of input from a string of game data.
 function loadGameData(gamedata)
 {
     Android.test("loading data... " + gamedata);
-    if(gamedata.charAt(0) == '[')//remove the [surrounding []
-        gamedata = gamedata.slice(1, -1);
     
     var inputlist = gamedata.split(',');
     var len = inputlist.length;
+    Android.test("length: " + len);
     for(i = 0; i < len; i++)
     {
         Android.test(i+" "+inputlist[i]);
