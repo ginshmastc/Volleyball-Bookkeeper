@@ -48,7 +48,7 @@ Inputs the starting match data.
 */
 function setStartingData(data, url)
 {
-	Android.test("Parsing JSON...");
+	Android.test("Parsing JSON... " + data);
     startingJSON = data;
     startingData = JSON.parse(data);
 	
