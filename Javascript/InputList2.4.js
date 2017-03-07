@@ -130,7 +130,10 @@ function loadGameData(gamedata)
     var inputlist = gamedata.split(',');
     var len = inputlist.length;
     for(i = 0; i < len; i++)
+    {
+        Android.test(i+" "+inputlist[i]);
         addInput(new Node(inputlist[i]));
+    }
 }
 
 function getGameDataPackage()
