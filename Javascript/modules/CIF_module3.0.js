@@ -677,6 +677,7 @@ award: true if a point is awarded, false if not
 	
 	function loadInput()
 	{
+		Android.test("loadInput()");
 	    setLock(true);
             reset();
 
@@ -703,6 +704,7 @@ award: true if a point is awarded, false if not
                 cur = nextInput();
             }
             setLock(false);
+		Android.test("loadInput() finished.");
 	}
 
 /*
