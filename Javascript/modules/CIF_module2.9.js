@@ -111,6 +111,8 @@ function getModule() {
 
             col = "blue";
             setFontColor(col);
+	    if(startingData.input)
+		    loadInput();
             
             drawScore();
 
@@ -669,7 +671,13 @@ award: true if a point is awarded, false if not
     var onUndo = function ()
         {
             clearRect(0,0,1,1);
-            setLock(true);
+	    removeInput();
+            loadInput();
+        };
+	
+	function loadInput()
+	{
+	    setLock(true);
             reset();
 
             initIterator();
@@ -695,7 +703,7 @@ award: true if a point is awarded, false if not
                 cur = nextInput();
             }
             setLock(false);
-        };
+	}
 
 /*
 Called when the set is finished.  Package any game data and send to device.
