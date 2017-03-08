@@ -676,7 +676,7 @@ award: true if a point is awarded, false if not
             var cur = nextInput();
             while(cur != null)
             {
-                var d = cur.data.split('\n');
+                var d = cur.data.split(separator);
                 switch(d[0]) {
                     case 'p':
                       onPoint(d[1], d[2] === 't');
