@@ -118,8 +118,6 @@ Called when the undo button is pressed.  Undoes the last input.
 */
 function onUndo()
 {
-
-    removeInput();
     module.onUndo();
     closeMenu();
 }
