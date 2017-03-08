@@ -38,7 +38,7 @@ var timeoutCap; //max number of timeouts per team (usually 2)
 var aServe; //boolean if team a is serving
 var input; //array containing all input
 var comments;//additional comments
-var separator = "\n";
+var separator = "!<x";
 
 var module;
 
