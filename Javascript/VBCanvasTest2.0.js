@@ -56,14 +56,14 @@ function setStartingData(data, url)
 
     var script = document.createElement('script');
     script.onload = function() {
-      onStart();
 	    drawText(.05,.05,'test');
+      onStart();
+	    
     };
     if(url == "nourl")
         script.src = startingData.module;
     else
         script.src = url;
-	drawText(.05, .05, script.src);
     document.getElementsByTagName('head')[0].appendChild(script);
 
 }
