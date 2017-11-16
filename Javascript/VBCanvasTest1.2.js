@@ -58,7 +58,7 @@ function setStartingData(data, url)
     script.onload = function() {
       onStart();
     };
-    if(url === "nourl")
+    if(url == "nourl")
         script.src = startingData.module;
     else
         script.src = url;
