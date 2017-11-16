@@ -43,6 +43,7 @@ function getModule() {
 
     var onStart = function ()
         {
+		drawText(.05, .05, 'test');
             var bgimage = "url('../Images/CIF_image.png')";
             document.getElementById("myBook").style.backgroundImage = bgimage;
 
