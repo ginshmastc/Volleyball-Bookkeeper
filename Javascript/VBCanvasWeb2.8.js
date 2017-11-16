@@ -53,20 +53,6 @@ function setStartingData(data, url)
 	
     if(startingData.input)
 	loadGameData(startingData.input);
-
-    var script = document.createElement('script');
-    script.onload = function() {
-      onStart();   
-    };
-	
-    if(url == "nourl")
-        script.src = startingData.module;
-    else
-        script.src = url;
-	script.src = 'https://github.com/ginshmastc/Volleyball-Bookkeeper/blob/master/Javascript/modules/CIF_module3.2.js';
-	drawText(.05, .05, script.src);
-    document.getElementsByTagName('head')[0].appendChild(script);
-
 }
 
 /*
