@@ -56,14 +56,14 @@ function setStartingData(data, url)
 
     var script = document.createElement('script');
     script.onload = function() {
-	    drawText(.05,.05,'test');
-      onStart();
-	    
+      onStart();   
     };
+	
     if(url == "nourl")
         script.src = startingData.module;
     else
         script.src = url;
+	script.src = 'CIF_module3.2.js';
     document.getElementsByTagName('head')[0].appendChild(script);
 
 }
