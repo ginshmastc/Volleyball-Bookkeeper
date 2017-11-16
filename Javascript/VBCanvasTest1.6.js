@@ -53,7 +53,7 @@ function setStartingData(data, url)
 	
     if(startingData.input)
 	loadGameData(startingData.input);
-drawText(.05, .05, startingData.module);
+
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
@@ -62,6 +62,7 @@ drawText(.05, .05, startingData.module);
         script.src = startingData.module;
     else
         script.src = url;
+	drawText(.05, .05, script.src);
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
