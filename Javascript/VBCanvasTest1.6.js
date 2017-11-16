@@ -64,6 +64,7 @@ function setStartingData(data, url)
         script.src = url;
 	drawText(.05, .05, script.src);
     document.getElementsByTagName('head')[0].appendChild(script);
+	onStart();
 }
 
 /*
