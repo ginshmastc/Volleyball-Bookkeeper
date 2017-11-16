@@ -39,7 +39,7 @@ function init()
     openMenu();
         }, false);
 
-    var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false, "module":"../Javascript/modules/CIF_module3.0.js"}';
+    var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false, "module":"/Javascript/modules/CIF_module3.0.js"}';
     setStartingData(test, 'nourl');
 }
 
@@ -53,7 +53,7 @@ function setStartingData(data, url)
 	
     if(startingData.input)
 	loadGameData(startingData.input);
-drawText(.5, .5, 'test');
+
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
