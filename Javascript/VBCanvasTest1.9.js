@@ -57,6 +57,7 @@ function setStartingData(data, url)
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
+	    drawText(.05,.05,'test');
     };
     if(url == "nourl")
         script.src = startingData.module;
@@ -64,7 +65,7 @@ function setStartingData(data, url)
         script.src = url;
 	drawText(.05, .05, script.src);
     document.getElementsByTagName('head')[0].appendChild(script);
-	onStart();
+
 }
 
 /*
