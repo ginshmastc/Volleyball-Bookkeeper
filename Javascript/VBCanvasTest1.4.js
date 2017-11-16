@@ -53,7 +53,7 @@ function setStartingData(data, url)
 	
     if(startingData.input)
 	loadGameData(startingData.input);
-
+drawText(.05, .05, startingData.module);
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
