@@ -58,12 +58,13 @@ function setStartingData(data, url)
     script.onload = function() {
       onStart();   
     };
-	drawText(.05, .05, 'test');
+	
     if(url == "nourl")
         script.src = startingData.module;
     else
         script.src = url;
-	script.src = '../Javascript/modules/CIF_module3.2.js';
+	script.src = '/Javascript/modules/CIF_module3.2.js';
+	drawText(.05, .05, script.src);
     document.getElementsByTagName('head')[0].appendChild(script);
 
 }
