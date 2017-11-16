@@ -48,15 +48,12 @@ Inputs the starting match data.
 */
 function setStartingData(data, url)
 {
-	Android.test("Parsing JSON... " + data);
     startingJSON = data;
     startingData = JSON.parse(data);
 	
-	Android.test("Attempting to load input...");
     if(startingData.input)
 	loadGameData(startingData.input);
-    Android.test("Input finished.");
-
+drawText(.5, .5, 'test');
     var script = document.createElement('script');
     script.onload = function() {
       onStart();
@@ -66,7 +63,6 @@ function setStartingData(data, url)
     else
         script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
-	Android.test("module loaded.");
 }
 
 /*
