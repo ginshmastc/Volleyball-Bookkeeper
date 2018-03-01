@@ -1,4 +1,6 @@
-
+/*
+Loads a new URL.
+*/
 function loadUrl(newLocation)
 {
   Android.test("loadURL" + newLocation);
@@ -6,6 +8,9 @@ function loadUrl(newLocation)
   return false;
 }
 
+/*
+Creates a script object and appends it to the document.
+*/
 function injectJS(path)
 {
 Android.test("injectJS " + path);
