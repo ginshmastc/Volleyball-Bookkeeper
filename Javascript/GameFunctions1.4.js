@@ -53,6 +53,9 @@ function onStart()
     module.onStart();
 }
 
+/*
+Calls the onStart function again.
+*/
 function reset()
 {
     module.onStart();
