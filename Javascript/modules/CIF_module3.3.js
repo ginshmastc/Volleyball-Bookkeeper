@@ -2,7 +2,7 @@
 This module contains functions and logic for the CIF volleyball book style.
 */
 
-
+//getModule is used to deliver the entire module to the bookkeeping system.
 function getModule() {
 	//define functions and set common functions names to their declarations contained here
 
@@ -36,6 +36,9 @@ function getModule() {
     var TRIANGLE = 2;
     var SQUARE = 3;
 
+	/*
+	Initializes values for the set to start.
+	*/
     var onStart = function ()
         {
             var bgimage = "url('../Images/CIF_image.png')";
@@ -113,6 +116,11 @@ function getModule() {
 
         };
 
+	/*
+	Rewards a point to one side and draws the appropriate markings on the canvas.
+	team: the team that the point is awarded to.
+	libero: true if the libero checkbox is checked.
+	*/
     var onPoint = function (team, libero)
         {
             setFontSize(18);
@@ -170,6 +178,9 @@ function getModule() {
 	    }
         };
 
+	/*
+	Erases the previous score and draws the new score in the score area.
+	*/
 function drawScore()
 {
    setFontSize(20);
@@ -216,6 +227,7 @@ libero: true if libero served.
 
 /*
 Draw an "R" on the b marker position.
+libero: true if the libero checkbox is checked.
 */
     function drawBR(libero)
     {
@@ -250,6 +262,7 @@ Draw an "R" on the b marker position.
 
 /*
 Draw a point on the A marker position.
+libero: true if the libero checkbox is checked.
 */
     function drawAPoint(libero)
     {
@@ -578,6 +591,9 @@ draws lineups including previous substitutions.
         setFontColor(col);
     }
 
+	/*
+	Draws a triangle around the rotational number on the side where the libero served. A libero can only serve in one rotational spot.
+	*/
 function drawLiberoTriangles()
 {
     if(a_liberoServeRotation > 0)
@@ -653,6 +669,9 @@ award: true if a point is awarded, false if not
 	    drawScore();
         };
 
+	/*
+	Clears the entire screen, removes the top input, and redraws the rest of the input.
+	*/
     var onUndo = function ()
         {
             clearRect(0,0,1,1);
@@ -660,6 +679,9 @@ award: true if a point is awarded, false if not
             loadInput();
         };
 	
+	/*
+	Loads an input list.
+	*/
 	function loadInput()
 	{
 		Android.test("loadInput()");
@@ -711,6 +733,6 @@ Called when the set is finished.  Package any game data and send to device.
 		}
 		
     };
-
+//return the set of functions as a module
     return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished, onUndo};
 }
