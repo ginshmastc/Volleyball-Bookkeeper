@@ -1,5 +1,7 @@
 
-
+/*
+Gets the operating system of the device being used.
+*/
 function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
