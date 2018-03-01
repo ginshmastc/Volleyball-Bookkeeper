@@ -141,6 +141,11 @@ function triangleText(xPercent, yPercent, text)
     drawTriangle(xLocation - (fontWidth / 4), yLocation - (fontHeight / 1.25), fontWidth, fontHeight);
 }
 
+/*
+Helper function to measure the space needed for a string to be displayed and move the cursor accordingly.
+text: the string being measured.
+return: The width of the string.
+*/
 function measureText(text)
 {
     if(!canvasReady)
@@ -148,6 +153,13 @@ function measureText(text)
     return context.measureText(text).width;
 }
 
+/*
+Erases the content in a rectangular area.
+xPercent: The percentage from the left of page of the starting x location in the left side of the box.
+yPercent: The percentage from the top of page of the starting y location in the top side of the box.
+xPercent2: The percentage from the left of page for the right side of the box.
+yPercent2: The percentage from the top of page for the top bottom side of the box.
+*/
 function clearRect(xPercent, yPercent, xPercent2, yPercent2)
 {
     if(!canvasReady)
