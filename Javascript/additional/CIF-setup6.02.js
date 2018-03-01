@@ -2,6 +2,8 @@
 This file gives functions to the CIF setup page.
 */
 
+var os;//operating system of the user
+var win;//next page window
 var saved;
 var teamA;
 var teamB;
@@ -12,9 +14,11 @@ var lineupB;
 var sets;
 var playTo;
 var cap;
+var scores;
 
 function init()
 {
+	os = getMobileOperatingSystem();
     saved = "";
     teamA = "";
     teamB = "";
@@ -25,7 +29,53 @@ function init()
     lineupB = [];
     playTo = 25;
     cap = 0;
-    openOverlay1();
+	scores = '';
+	/*
+	If storage session json has content, then it should not be the first set, and we can skip the first overlay
+	*/
+	if(sessionStorage.getItem('json'))
+	{
+		saved = sessionStorage.getItem('json');
+		var saveddata = JSON.parse(saved);
+		document.getElementById("teamA").value = saveddata.teamA;
+		document.getElementById("teamB").value = saveddata.teamB;
+		document.getElementById("playTo").value = saveddata.playTo;
+		aWins = saveddata.aWins;
+		bWins = saveddata.bWins;
+		document.getElementById("sets").value = saveddata.sets;
+		lineupA = saveddata.aLineup;
+		lineupB = saveddata.bLineup;
+		scores = saveddata.scores;
+		
+		document.getElementById('alineup1').value = lineupA[0];
+        document.getElementById('alineup2').value = lineupA[1];
+		document.getElementById('alineup3').value = lineupA[2];
+		document.getElementById('alineup4').value = lineupA[3];
+		document.getElementById('alineup5').value = lineupA[4];
+		document.getElementById('alineup6').value = lineupA[5];
+		document.getElementById('alineupL').value = lineupA[6];
+    
+		document.getElementById('blineup1').value = lineupB[0];
+		document.getElementById('blineup2').value = lineupB[1];
+		document.getElementById('blineup3').value = lineupB[2];
+		document.getElementById('blineup4').value = lineupB[3];
+		document.getElementById('blineup5').value = lineupB[4];
+		document.getElementById('blineup6').value = lineupB[5];
+		document.getElementById('blineupL').value = lineupB[6];
+		
+		openOverlay2();
+	}
+	else {
+	  if(sessionStorage.getItem('scores')) {
+		var scorelist = sessionStorage.getItem('scores').split(",");
+		for(var i = 1; i < scorelist.length; i++)
+    		document.getElementById('score'+ i).innerHTML = scorelist[i-1];
+	    openScoreOverlay();
+	}
+	else {
+      openOverlay1();
+	}
+	}
 }
 
 function resetOverlays()
@@ -33,6 +83,7 @@ function resetOverlays()
     document.getElementById("overlay1").style.width = "0%";
     document.getElementById("overlay2").style.width = "0%";
     document.getElementById("overlay3").style.width = "0%";
+	document.getElementById("scoreoverlay").style.width = "0%";
 }
 
 function openOverlay1()
@@ -42,7 +93,7 @@ function openOverlay1()
 }
 
 function openOverlay2()
-{   
+{
     if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
     {
         Android.toast('Team name is missing!');
@@ -73,7 +124,7 @@ function openOverlay2()
 }
 
 function fsOpenOverlay2()
-{   
+{
     if(document.getElementById('fsplayTo').value == '')
     {
         Android.toast('Need to input a score to play to!');
@@ -143,6 +194,12 @@ function openOverlay3()
     document.getElementById("overlay3").style.width = "100%";
 }
 
+function openScoreOverlay()
+{
+    resetOverlays();
+    document.getElementById("scoreoverlay").style.width = "100%";
+}
+
 function switchSides()
 {
     var temp = teamA;
@@ -184,11 +241,13 @@ function switchSides()
     document.getElementById('blineupL').value = temp;
 }
 
+/*
+  Performs a forward volleyball rotation by shifting player positions forward by 1 spot
+*/
 function rotate(team)
 {
     if(team == 'a')
     {
-
         var temp = [];
         temp[0] = document.getElementById('alineup1').value;
         temp[1] = document.getElementById('alineup2').value;
@@ -223,6 +282,9 @@ function rotate(team)
     }
 }
 
+/*
+  Performs a back volleyball rotation by moving all players back 1 spot
+*/
 function backRotate(team)
 {
     if(team == 'a')
@@ -261,6 +323,9 @@ function backRotate(team)
     }
 }
 
+/*
+Called when all information is entered and the next set is ready to start.
+*/
 function start()
 {
     saved = '{';
@@ -328,6 +393,7 @@ function start()
     saved += '"playTo":' + playTo + ', ';
     saved += '"cap":' + cap + ', ';
     saved += '"aServe":' + tServe + ', ';
+	saved += '"scores":"' + scores + '", ';
     
     saved += '"aLineup":[';
     saved += lineupA[0] + ", ";
@@ -345,10 +411,19 @@ function start()
     saved += lineupB[4] + ", ";
     saved += lineupB[5] + ", ";
     saved += lineupB[6] + ']';
+	
+	saved += ', "module":"../Javascript/modules/CIF_module3.3.js"';
     saved += '}';
 
     resetOverlays();
-    Android.finishForm(saved);
+	if(os == 'Android')
+      Android.finishForm(saved);
+    else if(os == 'Web')
+	{
+		var localpath = '../HTML/VolleyballBook5.4.html';
+		sessionStorage.setItem('json', saved);
+        var win = window.open(localpath, "_self");
+	}
     
 }
 
