@@ -2,7 +2,7 @@
 This file gives functions to aid in drawing texts and symbols on the canvas in
 the correct locations on the scaled bookkeeping image.
 */
-
+var os;
 var scale;
 var canvas;
 var context;
@@ -20,6 +20,7 @@ and height as well as sets canvasReady to true.
 */
 function init()
 {
+	
     scale = 3;
     canvas = document.getElementById("myCanvas");
     fontFamily = "Arial";
@@ -38,9 +39,10 @@ function init()
     canvas.addEventListener('mousedown', function(event) {
     openMenu();
         }, false);
+	startingJSON = sessionStorage.getItem('json');
 
-    //var test = '{"teamA":"TEAM A", "teamB":"TEAM B", "aLineup":[1,2,3,4,5,6,7], "bLineup":[7,6,5,4,3,2,1], "timeoutCap":2, "aServe":false, "module":"../Javascript/modules/CIF_module.js"}';
-    //setStartingData(test);
+    if(startingJSON)
+	  setStartingData(startingJSON);
 }
 
 /*
@@ -48,6 +50,8 @@ Inputs the starting match data.
 */
 function setStartingData(data, url)
 {
+	os = getMobileOperatingSystem();
+	if(os == 'Android') {
 	Android.test("Parsing JSON... " + data);
     startingJSON = data;
     startingData = JSON.parse(data);
@@ -61,12 +65,27 @@ function setStartingData(data, url)
     script.onload = function() {
       onStart();
     };
-    if(url === "nourl")
+    if(!url || url === "nourl")
         script.src = startingData.module;
     else
         script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
 	Android.test("module loaded.");
+	} else {
+        startingData = JSON.parse(data);
+        if(startingData.input)
+	      loadGameData(startingData.input);
+        
+    var script = document.createElement('script');
+    script.onload = function() {
+      onStart();
+    };
+    if(!url || url === "nourl")
+        script.src = startingData.module;
+    else
+        script.src = url;
+	document.getElementsByTagName('head')[0].appendChild(script);
+	}
 }
 
 /*
