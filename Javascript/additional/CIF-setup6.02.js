@@ -16,6 +16,9 @@ var playTo;
 var cap;
 var scores;
 
+/*
+Initializes values for the setup page.
+*/
 function init()
 {
 	os = getMobileOperatingSystem();
@@ -78,6 +81,9 @@ function init()
 	}
 }
 
+/*
+Hides all overlays from the page.
+*/
 function resetOverlays()
 {
     document.getElementById("overlay1").style.width = "0%";
@@ -86,12 +92,18 @@ function resetOverlays()
 	document.getElementById("scoreoverlay").style.width = "0%";
 }
 
+/*
+Opens overlay 1.
+*/
 function openOverlay1()
 {
     resetOverlays();
     document.getElementById("overlay1").style.width = "100%";
 }
 
+/*
+Opens overlay 2
+*/
 function openOverlay2()
 {
     if(document.getElementById('teamA').value == '' || document.getElementById('teamB').value == '')
@@ -123,83 +135,28 @@ function openOverlay2()
     document.getElementById('overlay2').style.width = "100%";
 }
 
-function fsOpenOverlay2()
-{
-    if(document.getElementById('fsplayTo').value == '')
-    {
-        Android.toast('Need to input a score to play to!');
-        return;
-    }
-    saved = "";
-    document.getElementById('ateamlabel').innerHTML = teamA;
-    document.getElementById('bteamlabel').innerHTML = teamB;
-    
-    playTo = document.getElementById('fsplayTo').value;
-    
-    if(document.getElementById('fscap').value != '')
-        cap = document.getElementById('fscap').value;
-    
-    resetOverlays();
-    document.getElementById('overlay2').style.width = "100%";
-}
-
-function startWithOverlay2(webdata, a_wins, b_wins)
-{
-    resetOverlays();
-    saved = "";
-    var tempdata = JSON.parse(webdata);
-    
-    teamA = tempdata.teamB;
-    teamB = tempdata.teamA;
-    document.getElementById('ateamlabel').innerHTML = teamA;
-    document.getElementById('bteamlabel').innerHTML = teamB;
-    lineupA = tempdata.bLineup;
-    lineupB = tempdata.aLineup;
-    sets = tempdata.sets;
-    playTo = tempdata.playTo;
-    cap = tempdata.cap;
-    aWins = b_wins;
-    bWins = a_wins;
-    
-    document.getElementById('alineup1').value = lineupA[0];
-    document.getElementById('alineup2').value = lineupA[1];
-    document.getElementById('alineup3').value = lineupA[2];
-    document.getElementById('alineup4').value = lineupA[3];
-    document.getElementById('alineup5').value = lineupA[4];
-    document.getElementById('alineup6').value = lineupA[5];
-    document.getElementById('alineupL').value = lineupA[6];
-    
-    document.getElementById('blineup1').value = lineupB[0];
-    document.getElementById('blineup2').value = lineupB[1];
-    document.getElementById('blineup3').value = lineupB[2];
-    document.getElementById('blineup4').value = lineupB[3];
-    document.getElementById('blineup5').value = lineupB[4];
-    document.getElementById('blineup6').value = lineupB[5];
-    document.getElementById('blineupL').value = lineupB[6];
-    Android.test(aWins + ' ' + bWins + ' ' + sets);
-    if(a_wins == b_wins && a_wins + 1 == sets)
-    {//If final set, go to overlay1 first to set score parameters for final set
-        Android.test('final set');
-        
-        openOverlay3();
-    }
-    else
-        document.getElementById('overlay2').style.width = "100%";
-        
-}
-
+/*
+Opens overlay 3.
+*/
 function openOverlay3()
 {
     resetOverlays();
     document.getElementById("overlay3").style.width = "100%";
 }
 
+/*
+Opens the score overlay to display scores.
+*/
 function openScoreOverlay()
 {
     resetOverlays();
     document.getElementById("scoreoverlay").style.width = "100%";
 }
 
+/*
+Switches the data for each of the teams so that they are on different sides of the screen.
+Typically users will want the team to be on the same side as they are seen on the screen.
+*/
 function switchSides()
 {
     var temp = teamA;
