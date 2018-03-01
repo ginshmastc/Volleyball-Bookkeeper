@@ -13,8 +13,6 @@ function getModule() {
     var a_column;
     var b_marker;
     var b_column;
-    var a_setsWon;
-    var b_setsWon;
     var aServe;
 	
     var A_MARKER_START = .15;
@@ -24,9 +22,6 @@ function getModule() {
     var CIF_SUBCAP = 18;
     var CIF_TIMEOUTS = 2;
     var LINEUP_LEN = 6;
-    var playTo;
-    var pointCap;
-    var setCap;
     var col;
 
     var a_scoreMarks;
@@ -55,7 +50,7 @@ function getModule() {
             a_subs = 0;
             a_timeouts = 0;
 
-//arrays of markers and columns
+            //arrays of markers and columns
             a_markers = [A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START, A_MARKER_START];
             a_columns = [0,0,0,0,0,0];
             b_markers = [B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START, B_MARKER_START];
@@ -80,10 +75,10 @@ function getModule() {
 
             timeoutCap = CIF_TIMEOUTS;
             subCap = CIF_SUBCAP;
-	    playTo = startingData.playTo;
+	        playTo = startingData.playTo;
             aServe = startingData.aServe;
-	    pointCap = startingData.cap;
-	    setCap = startingData.sets;
+	        scoreCap = startingData.cap;
+	        sets = startingData.sets;
             comments = "";
             if(aServe)
                 b_rotationPosition--;
@@ -158,16 +153,6 @@ function getModule() {
             drawScore();
             if(libero)
                 drawLiberoTriangles();
-
-            if(pointCap > 0 && a_points >= pointCap)
-                onSetFinished('a');
-            if(pointCap > 0 && b_points >= pointCap)
-                onSetFinished('b');
-
-            if(a_points >= playTo && a_points - b_points >= 2)
-                onSetFinished('a');
-            if(b_points >= playTo && b_points - a_points >= 2)
-                onSetFinished('b');
 		
 	    if(aServe)//Hide libero served checkbox if libero cannot serve
 	    {
@@ -711,18 +696,21 @@ award: true if a point is awarded, false if not
 Called when the set is finished.  Package any game data and send to device.
 */
     var onSetFinished = function (team)
-        {
-	    drawText(.05, .05, "set finished by " + team);
-	    if(team == 'a')
-		a_setsWon++;
-	    else if(team == 'b')
-                b_setsWon++;
+    {
+		drawText(.05, .05, "set finished by " + team);
+		if(os == 'Android') {
 	    if(a_setsWon == setCap)
 		Android.finishGame("a");
 	    else if(b_setsWon == setCap)
 		Android.finishGame("b");
             Android.nextSet(a_setsWon, b_setsWon);
-        };
+		} else if(os == 'Web') {
+			//if(a_setsWon == setCap)//team A won match
+			//{}
+		
+		}
+		
+    };
 
     return {onStart, onPoint, onSubstitution, onTimeout, onPenalty, onSetFinished, onUndo};
 }
