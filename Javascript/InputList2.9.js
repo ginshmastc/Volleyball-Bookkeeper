@@ -20,6 +20,9 @@ function initInput()
     lock = false;
 }
 
+/*
+Locks the list from data being input or removed.
+*/
 function setLock(locked)
 {
     lock = locked;
@@ -54,6 +57,9 @@ function addInput(node)
     inputLength++;
 }
 
+/*
+Initializes the iterator
+*/
 function initIterator()
 {
     inputCurrent = inputHead;
@@ -136,6 +142,9 @@ function loadGameData(gamedata)
     }
 }
 
+/*
+Creates a package of game data.
+*/
 function getGameDataPackage()
 {
     Android.test("creating package...");
