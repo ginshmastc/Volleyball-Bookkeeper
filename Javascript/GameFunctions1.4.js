@@ -35,6 +35,7 @@ var playTo; //score to reach to end the game (have to win by 2 points)
 var scoreCap; //The game is won when a team reaches this score
 var subCap; //max number of subs per team per set (depends on format)
 var timeoutCap; //max number of timeouts per team (usually 2)
+var sets;//sets needed to win to finish match
 var aServe; //boolean if team a is serving
 var input; //array containing all input
 var comments;//additional comments
@@ -70,6 +71,15 @@ function onPoint(team, lib)
         foo = 'f';
     addInput(new Node("p"+separator+team+separator+foo));
     closeMenu();
+	
+	/*
+	The set is finished when the score cap is reached by either team or a team reaches the play to score and wins by at least
+    2 points. A set can have no score cap in which case the cap will be set to -1, and a team must reach the play to and win by 2.
+	*/
+	if((scoreCap > 0 && a_points == scoreCap) || (a_points >= playTo && a_points - b_points >= 2))
+		onSetFinished('a');
+	if((scoreCap > 0 && b_points == scoreCap) || (b_points >= playTo && b_points - a_points >= 2))
+		onSetFinished('b');
 }
 
 /*
@@ -128,6 +138,26 @@ Called when the set is finished.
 function onSetFinished(team)
 {
     module.onSetFinished(team);
-    closeMenu();
+	var localpath = '../HTML/MatchSetup1.1.html';
+	if(team == 'a')
+		a_setsWon++;
+	if(team == 'b')
+		b_setsWon++;
+	//set the json setswon to the new value
+	startingData.aWins = a_setsWon;
+	startingData.bWins = b_setsWon;
+	var scorelist = '';
+	if(sessionStorage.getItem('scores'))
+		scorelist = sessionStorage.getItem('scores');
+	scorelist += a_points + " - " + b_points + ",";
+	sessionStorage.setItem('scores', scorelist);
+	var jsonstr = JSON.stringify(startingData);
+	drawText(.05, .5, startingData.scores);
+	if(a_setsWon == sets || b_setsWon == sets)
+	  sessionStorage.removeItem('json');
+    else
+      sessionStorage.setItem('json', jsonstr);
+    var win = window.open(localpath, "_self");
+	
 }
 
